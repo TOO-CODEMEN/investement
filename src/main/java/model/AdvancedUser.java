@@ -11,6 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AdvancedUser {
 
+
+
+
 String Name;
 
 String Surname;
@@ -21,7 +24,7 @@ String Email;
 
 String OrgName;
 
-int INN;
+int INN; //ИНН
 
 String WebSiteUrl;
 
@@ -32,5 +35,7 @@ String Country;
 String City;
 
 String Position;
+
+
 
 }
