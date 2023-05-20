@@ -36,6 +36,4 @@ String City;
 
 String Position;
 
-
-
 }
