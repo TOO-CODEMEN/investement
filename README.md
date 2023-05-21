@@ -6,7 +6,7 @@
 ## Технологический стек
 - __Backend:__ Java, Spring, PostgreSQL
 - __Frontend:__ React, Redux, CSS
-Docker
+- Docker
 
 ## Установка и запуск
 > TODO
