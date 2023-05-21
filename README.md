@@ -4,8 +4,8 @@
 > TODO
 
 ## Технологический стек
--__Backend:__Java, Spring, PostgreSQL
--__Frontend:__React, Redux, SCSS
+- __Backend:__Java, Spring, PostgreSQL
+- __Frontend:__React, Redux, SCSS
 
 ## Установка и запуск
 > TODO
