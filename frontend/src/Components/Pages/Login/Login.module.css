@@ -1,7 +1,7 @@
 .Authorization {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    min-width: 500px;
     align-items: center;
     background-color: white;
     border-radius: 20px;
@@ -34,4 +34,16 @@
 
 .Button:hover {
     box-shadow: #566885 0 0 10px 3px;
+}
+
+.register__link {
+    border-bottom: 1px solid #000;
+    align-self: flex-start;
+    font-size: 12px;
+}
+
+@media (max-width: 500px) {
+    .Authorization {
+        width: 100%;
+    }
 }
