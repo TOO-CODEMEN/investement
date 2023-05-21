@@ -1,0 +1,27 @@
+.container {
+    padding: 0px 50px 0px 50px;
+}
+
+.form {
+    margin-top: 15px;
+}
+
+.input {
+    display: block;
+    margin-bottom: 10px;
+    width: 25%;
+}
+
+.form__button {
+    border: none;
+    background-color: #566885;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 30px;
+    align-self: flex-end;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}

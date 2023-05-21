@@ -15,7 +15,7 @@ const Login = () => {
             <NavLink to={'/register'} className={cl.register__link}>
                 Зарегистрироваться
             </NavLink>
-            <button className={cl.Button} >Войти</button>
+            <button className={cl.Button}>Войти</button>
         </div>
     )
 }
