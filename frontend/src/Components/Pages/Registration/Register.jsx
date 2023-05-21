@@ -24,9 +24,11 @@ export const Register = () => {
         if (validator.isEmpty(register.name)) {
             alert("Введите ФИО")
         } else if (!validator.isEmail(register.email)) {
-            alert("Вы не ввели E-mail") 
+            alert("Вы не ввели E-mail")
         } else if (!validator.isStrongPassword(register.password, { minSymbols: 0 })) {
             alert("Пароль должен состоять из одной строчной, прописной буквы и цифры, не менее 8 символов")
+        } else if (!validator.isInt(register.inn)) {
+            alert("Введите верно ИНН")
         } else {
             console.log('все норм')
         }
