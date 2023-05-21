@@ -1,5 +1,9 @@
 @import url("./utils/normalize.css");
 
+.container {
+  padding: 0px 50px 0px 50px;
+}
+
 .App {
   display: flex;
   flex-direction: column;
