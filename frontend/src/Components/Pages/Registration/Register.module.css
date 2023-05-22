@@ -1,24 +1,40 @@
+.head {
+    margin-top: 10px;
+    color: #A6A6A6;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
 
 .form {
+    border: 1px solid #CCCCCC;
+    padding: 33px 68px;
+    border-radius: 10px;
     margin-top: 15px;
+}
+
+.flex__container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 23px;
+    width: 100%;
 }
 
 .input {
     display: block;
     margin-bottom: 10px;
-    width: 30%;
+    margin-right: 10px;
 }
 
 .form__button {
-    border: none;
-    background-color: #566885;
-    border-radius: 8px;
-    font-size: 16px;
+    background-color: #CC2222;
+    border-radius: 10px;
+    font-size: 20px;
     color: white;
-    font-weight: 700;
-    padding: 10px 30px;
-    align-self: flex-end;
-    margin-top: 10px;
+    font-weight: 600;
+    padding: 13px 36.5px;
+    text-transform: uppercase;
+    align-self: center;
     cursor: pointer;
     transition: 0.3s;
 }
