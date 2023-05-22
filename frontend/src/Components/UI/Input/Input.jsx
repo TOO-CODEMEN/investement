@@ -7,7 +7,7 @@ const Input = (props) => {
             <label>
                 {props.label}
             </label>
-            <input className={cl.Input} onChange={(event) => props.setValue(typeof props.object == "object" ? (value) => (
+            <input className={cl.Input} onChange={(event) => props.setValue(typeof props == "object" ? (value) => (
                 {
                     ...value,
                     [props.typeObject]: event.target.value

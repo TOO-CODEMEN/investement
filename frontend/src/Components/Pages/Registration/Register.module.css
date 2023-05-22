@@ -22,8 +22,23 @@
 
 .input {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-right: 10px;
+}
+
+.inputMask {
+    border: 2px solid #CCCCCC;
+    border-radius: 10px;
+    background: transparent;
+    width: 100%;
+    padding: 10px;
+    transition: 0.3s;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.inputMask:hover, .inputMask:focus-visible, .inputMask:active {
+    outline: none;
 }
 
 .form__button {

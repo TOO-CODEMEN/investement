@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Input from '../../UI/Input/Input'
 import cl from './Register.module.css'
 import validator from 'validator';
+import { InputMask } from 'primereact/inputmask';
+
 
 export const Register = () => {
 
@@ -52,7 +54,17 @@ export const Register = () => {
                 </div>
 
                 <div className={cl.flex__container}>
-                    <div className={cl.input}><Input type="text" label="ИНН*" value={register.inn} setValue={setRegister} typeObject={'inn'} object={register} /></div>
+                    <div className={cl.input}>
+                        <label>
+                            ИНН*
+                        </label>
+                        <InputMask value={register.inn} onChange={(event) => setRegister((value) => (
+                            {
+                                ...value,
+                                ['inn']: event.target.value
+                            }))} mask="9999999999" className={cl.inputMask}
+                        />
+                    </div>
                     <div className={cl.input}><Input type="text" label="Название организации" value={register.nameOrganization} setValue={setRegister} typeObject={'nameOrganization'} object={register} /></div>
                     <div className={cl.input}><Input type="text" label="Веб-сайт организации" value={register.webSite} setValue={setRegister} typeObject={'webSite'} object={register} /></div>
                     <div className={cl.input}><Input type="text" label="Отрасль ведения хоз.деятельности" value={register.industry} setValue={setRegister} typeObject={'industry'} object={register} /></div>
