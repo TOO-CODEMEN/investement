@@ -13,7 +13,7 @@
 }
 
 .Input {
-    margin-bottom: 26px;
+    margin-bottom: 30px;
     width: 100%;
 }
 
@@ -45,6 +45,13 @@
 
 @media (max-width: 500px) {
     .Authorization {
-        width: 100%;
+        padding: 30px 10px;
+        min-width: 300px;
+    }
+
+    .Button, .register__link {
+        font-size: 16px;
+        padding: 13px 20px;
+        align-self: flex-start;
     }
 }

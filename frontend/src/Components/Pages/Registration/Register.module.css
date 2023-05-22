@@ -32,9 +32,31 @@
     font-size: 20px;
     color: white;
     font-weight: 600;
+    margin-bottom: 20px;
     padding: 13px 36.5px;
     text-transform: uppercase;
     align-self: center;
     cursor: pointer;
     transition: 0.3s;
+}
+
+@media (max-width: 500px) {
+    
+    .head {
+        font-size: 14px;
+    }
+
+    .form {
+        padding: 0px ;
+        border: none;
+    }
+
+    .input {
+        width: 100%;
+    }
+
+    .form__button  {
+        font-size: 16px;
+        padding: 13px 20px;
+    }
 }
