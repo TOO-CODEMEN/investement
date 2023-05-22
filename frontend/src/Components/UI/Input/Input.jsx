@@ -3,16 +3,20 @@ import cl from './Input.module.css'
 
 const Input = (props) => {
     return (
-        <input className={cl.Input} onChange={(event) => props.setValue((value) => (
-            {
-                ...value,
-                [props.typeObject]: event.target.value 
-            }
-        ))}
-            value={props.value}
-            type={props.type}
-            placeholder={props.placeholder} 
+        <div>
+            <label>
+                {props.label}
+            </label>
+            <input className={cl.Input} onChange={(event) => props.setValue(typeof value == "object" ? (value) => (
+                {
+                    ...value,
+                    [props.typeObject]: event.target.value
+                }
+            ) : event.target.value)}
+                value={props.value}
+                type={props.type}
             />
+        </div>
     )
 }
 

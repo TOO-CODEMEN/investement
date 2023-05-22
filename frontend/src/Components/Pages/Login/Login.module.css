@@ -1,45 +1,46 @@
 .Authorization {
     display: flex;
     flex-direction: column;
-    min-width: 500px;
+    min-width: 394px;
+    border: 2px solid #CCCCCC;
+    border-radius: 10px;
     align-items: center;
     background-color: white;
     border-radius: 20px;
-    padding: 30px;
+    padding: 51px 47px;
     align-self: center;
     margin-top: 100px;
 }
-.Header {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
+
 .Input {
-    margin: 10px 20px;
+    margin-bottom: 26px;
     width: 100%;
 }
+
 .Button {
-    border: none;
-    background-color: #566885;
-    border-radius: 8px;
-    font-size: 16px;
+    background-color: #CC2222;
+    border-radius: 10px;
+    font-size: 20px;
     color: white;
-    font-weight: 700;
-    padding: 10px 30px;
-    align-self: flex-end;
+    font-weight: 600;
+    padding: 13px 60px;
+    text-transform: uppercase;
+    align-self: center;
     margin-top: 10px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-.Button:hover {
-    box-shadow: #566885 0 0 10px 3px;
-}
-
 .register__link {
-    border-bottom: 1px solid #000;
-    align-self: flex-start;
-    font-size: 12px;
+    padding: 13px 36.5px;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+    align-self: center;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #CC2222;
+    text-transform: uppercase;
 }
 
 @media (max-width: 500px) {

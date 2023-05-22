@@ -9,13 +9,12 @@ const Login = () => {
 
     return (
         <div className={cl.Authorization}>
-            <div className={cl.Header}>Вход</div>
-            <div className={cl.Input}><Input value={email} setValue={setEmail} type="text" placeholder="Введите email..." /></div>
-            <div className={cl.Input}><Input value={password} setValue={setPassword} type="password" placeholder="Введите пароль..." /></div>
+            <div className={cl.Input}><Input value={email} setValue={setEmail} type="text" label="E-mail" /></div>
+            <div className={cl.Input}><Input value={password} setValue={setPassword} type="password" label="Пароль" /></div>
+            <button className={cl.Button}>Авторизоваться</button>
             <NavLink to={'/register'} className={cl.register__link}>
                 Зарегистрироваться
             </NavLink>
-            <button className={cl.Button}>Войти</button>
         </div>
     )
 }
