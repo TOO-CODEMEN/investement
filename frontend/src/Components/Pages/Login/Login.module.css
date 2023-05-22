@@ -1,0 +1,57 @@
+.Authorization {
+    display: flex;
+    flex-direction: column;
+    min-width: 394px;
+    border: 2px solid #CCCCCC;
+    border-radius: 10px;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 51px 47px;
+    align-self: center;
+    margin-top: 100px;
+}
+
+.Input {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.Button {
+    background-color: #CC2222;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    padding: 13px 60px;
+    text-transform: uppercase;
+    align-self: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.register__link {
+    padding: 13px 36.5px;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+    align-self: center;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #CC2222;
+    text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+    .Authorization {
+        padding: 30px 10px;
+        min-width: 300px;
+    }
+
+    .Button, .register__link {
+        font-size: 16px;
+        padding: 13px 20px;
+        align-self: flex-start;
+    }
+}

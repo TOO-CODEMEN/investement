@@ -1,0 +1,24 @@
+.Header {
+    display: flex;
+    padding: 18px 23px 18px 23px;
+    justify-content: center;
+    align-items: center;
+    background-color: #CC2222;
+    width: 100%;
+}
+
+.Login {
+    margin-left: auto;
+    cursor: pointer;
+    transition: .3s;
+    color: #fff;
+}
+
+.Login:hover {
+    text-shadow: #fff6dd 0 0 7px;
+}
+
+.header__logo {
+    width: 100%;
+    max-width: 165px;
+}

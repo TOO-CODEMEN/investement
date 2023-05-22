@@ -1,5 +1,22 @@
+@import url("./utils/normalize.css");
+
+.container {
+  padding: 0px 23px 0px 23px;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  width: 100%;
+}
+
+.Wrap {
+  width: 1140px;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -12,6 +29,8 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+
 
 .App-header {
   background-color: #282c34;
@@ -32,7 +51,17 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.main-head {
+  max-width: 950px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
 }
