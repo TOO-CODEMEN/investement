@@ -1,5 +1,8 @@
 package model;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,29 +14,30 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AdvancedUser {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
 
+    String name;
 
+    String surname;
 
-String Name;
+    String patronymic;
 
-String Surname;
+    String email;
 
-String Patronymic;
+    String orgName;
 
-String Email;
+    int INN; //ИНН
 
-String OrgName;
+    String webSiteUrl;
 
-int INN; //ИНН
+    String industry;
 
-String WebSiteUrl;
+    String country;
 
-String Industry;
+    String city;
 
-String Country;
-
-String City;
-
-String Position;
+    String jobTitle;
 
 }

@@ -11,30 +11,30 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Expenses {
 
-int INN; //ИНН
+    int INN; //ИНН
 
-String Industry;
+    String industry;
 
-int Headcount;
+    int headcount;
 
-//Location Of Production
-String ProductionArea;
+    //Location Of Production
+    String productionArea;
 
-//Estimated land area production
-int ProductionSquare; //square meters
+    //Estimated land area production
+    int productionSquare; //square meters
 
-//Planned area of capital construction
-int PlannedAreaOfConstruction; //square meters
+    //Planned area of capital construction
+    int plannedAreaOfConstruction; //square meters
 
-String Equipment;
+    String equipment;
 
-String TypeOfBuilding;
+    String typeOfBuilding;
 
-int SquareOfBuilding;
+    int squareOfBuilding;
 
-int AccountingServices;
+    int accountingServices;
 
-int Patent;
+    int patent;
 
-int Others;
+    int others;
 }
