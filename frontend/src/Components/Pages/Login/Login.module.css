@@ -41,6 +41,12 @@
     font-size: 20px;
     color: #CC2222;
     text-transform: uppercase;
+    transition: .3s;
+}
+
+.register__link:hover,
+.Button:hover {
+    box-shadow: 0px 0px 15px 0 #CC2222;
 }
 
 @media (max-width: 500px) {
