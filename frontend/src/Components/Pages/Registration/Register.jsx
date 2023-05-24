@@ -4,9 +4,11 @@ import cl from './Register.module.css'
 import validator from 'validator';
 import { InputMask } from 'primereact/inputmask';
 import Select from 'react-select'
+import { useNavigate } from 'react-router-dom'
 
 
 export const Register = () => {
+    const navigation = useNavigate()
 
     const [register, setRegister] = useState({
         name: "",
@@ -40,6 +42,7 @@ export const Register = () => {
             alert("Пароль должен состоять из одной строчной, прописной буквы и цифры, не менее 8 символов")
         } else {
             alert("Успешно!")
+            navigation("/main")
         }
     }
 
