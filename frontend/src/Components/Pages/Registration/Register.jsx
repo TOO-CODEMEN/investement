@@ -3,9 +3,14 @@ import Input from '../../UI/Input/Input'
 import cl from './Register.module.css'
 import validator from 'validator';
 import { InputMask } from 'primereact/inputmask';
+import Select from 'react-select'
+import { useNavigate } from 'react-router-dom'
+import { createUser } from "../../../firebase";
+import { startSession } from "../../../session";
 
 
 export const Register = () => {
+    const navigate = useNavigate()
 
     const [register, setRegister] = useState({
         name: "",
@@ -20,14 +25,17 @@ export const Register = () => {
         job: ""
     })
 
-    const submitHandler = event => {
+    const options = [
+        { value: 'Пищевая промышленность', label: 'Пищевая промышленность' },
+    ]
+
+    const submitHandler = async event => {
         event.preventDefault();
 
         if (validator.isEmpty(register.name)) {
             alert("Введите ФИО")
         } else if (validator.isInt(register.name)) {
             alert("Введите ФИО верно")
-
         } else if (!validator.isInt(register.inn) || register.inn.length < 10) {
             alert("Введите верно ИНН, не менее 10 символов")
         } else if (!validator.isEmail(register.email)) {
@@ -35,7 +43,13 @@ export const Register = () => {
         } else if (!validator.isStrongPassword(register.password, { minSymbols: 0 })) {
             alert("Пароль должен состоять из одной строчной, прописной буквы и цифры, не менее 8 символов")
         } else {
-            alert("Успешно!")
+            try {
+                let registerResponse = await createUser(register.email, register.password);
+                startSession(registerResponse.user);
+                navigate("/main");
+              } catch (error) {
+                alert("Неверный логин или пароль")
+              }
         }
     }
 
@@ -67,7 +81,38 @@ export const Register = () => {
                     </div>
                     <div className={cl.input}><Input type="text" label="Название организации" value={register.nameOrganization} setValue={setRegister} typeObject={'nameOrganization'} object={register} /></div>
                     <div className={cl.input}><Input type="text" label="Веб-сайт организации" value={register.webSite} setValue={setRegister} typeObject={'webSite'} object={register} /></div>
-                    <div className={cl.input}><Input type="text" label="Отрасль ведения хоз.деятельности" value={register.industry} setValue={setRegister} typeObject={'industry'} object={register} /></div>
+                    <div className={cl.input} >
+                        <label>
+                            Отрасль ведения хоз.деятельности
+                        </label>
+                        <Select
+                            options={options}
+                            onChange={(event) => setRegister((value) => (
+                                {
+                                    ...value,
+                                    ['industry']: event.value
+                                }))}
+                            styles={{
+                                control: (baseStyles, state) => ({
+                                    ...baseStyles,
+                                    borderRadius: 10,
+                                    border: '2px solid #CCCCCC',
+                                    padding: 2,
+                                    fontSize: 15,
+                                }),
+                            }}
+
+                            theme={(theme) => ({
+                                ...theme,
+                                borderRadius: 0,
+                                colors: {
+                                  ...theme.colors,
+                                  primary25: '#fff',
+                                  primary: 'red',
+                                },
+                              })}
+                        />
+                    </div>
                     <div className={cl.input}><Input type="text" label="Должность" value={register.job} setValue={setRegister} typeObject={'job'} object={register} /></div>
                 </div>
 
@@ -75,7 +120,7 @@ export const Register = () => {
                     <div className={cl.input}><Input type="email" label="E-mail*" value={register.email} setValue={setRegister} typeObject={'email'} object={register} /></div>
                     <div className={cl.input}><Input type="password" label="пароль*" value={register.password} setValue={setRegister} typeObject={'password'} object={register} /></div>
                 </div>
-                <button className={cl.form__button}>
+                <button className={cl.form__button} onClick={() => console.log(register)}>
                     Зарегистрироваться
                 </button>
             </form >

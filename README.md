@@ -5,7 +5,7 @@
 
 ## Технологический стек
 - __Backend:__ Java, Spring, MySQL
-- __Frontend:__ React, Redux, CSS
+- __Frontend:__ React, Redux, CSS, PrimeReact
 - Docker
 
 ## Установка и запуск
