@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import cl from "./Login.module.css"
-import Input from "../../UI/Input/Input"
+import React, { useState, useEffect, useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+
 import { signInUser } from "../../../firebase";
 import { startSession } from "../../../session";
 import { isLoggedIn } from "../../../session";
+import cl from "./Login.module.css"
+import Input from "../../UI/Input/Input"
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -25,7 +26,7 @@ const Login = () => {
             startSession(loginResponse.user);
             navigate("/main");
         } catch (error) {
-            console.error(error.message);
+            alert("Неверный логин или пароль!");
         }
 
     }
@@ -47,6 +48,7 @@ const Login = () => {
                 Зарегистрироваться
             </NavLink>
         </form>
+        
     )
 }
 
