@@ -13,9 +13,8 @@
     margin-top: 15px;
 }
 
-.flex__container {
+.object {
     display: flex;
-    flex-wrap: wrap;
     margin-bottom: 23px;
     width: 100%;
 }
@@ -23,8 +22,12 @@
 .input {
     display: block;
     margin-bottom: 20px;
-    margin-right: 10px;
+    width: 100%;
 }
+
+.input:not(:last-child) {
+    margin-right: 10px;
+}   
 
 .form__button {
     background-color: #CC2222;
