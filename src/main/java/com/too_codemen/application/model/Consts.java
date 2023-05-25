@@ -1,6 +1,9 @@
 package com.too_codemen.application.model;
 
+import com.too_codemen.application.model.Expenses;
 public class Consts {
+
+    static Expenses expenses;
 
     //1 square meter
     public static final double ВАО = 15492.36;
@@ -15,6 +18,9 @@ public class Consts {
     public static final double ЮАО = 13510.37;
     public static final double ЮВАО = 14086.97;
     public static final double ЮЗАО = 16423.10;
+    public static final double capitalConstructionCost = 120000;
+
+
 
     // machine tools
 
@@ -30,17 +36,26 @@ public class Consts {
 
     //average salary per worker
 
-    public static final double milkFoodIndustry = 85.5960103574483;
+    public static final double milkFoodIndustry = 85.5960103574483 * 1000;
 
-    public static final double landTaxTest = 1000*ВАО*15/100;
+    //taxes
+    public static final double landTaxTest = 1000*ВАО*1.5/100;
+    public static final double propertyTaxTest = expenses.squareOfBuilding*ВАО*2.2/100;
 
     //per month
-    public static final double soloProprietorAccountingCost = 35000;
+    public static final double AccountingCost = 35000;
 
     public static final double soloProprietorRegistration = 800;
 
     public static final double juridicalPersonRegistration = 4000;
 
+
+    //Result
+    public static final double result = (expenses.headcount * milkFoodIndustry + landTaxTest + propertyTaxTest + AccountingCost + soloProprietorRegistration + capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000 ;
+    public static final double staff = (expenses.headcount * milkFoodIndustry) / 1000 ;
+    public static final double realEstate = (capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000 ;
+    public static final double taxes = (landTaxTest + propertyTaxTest) / 1000 ;
+    public static final double services = (AccountingCost + soloProprietorRegistration) / 1000 ;
 
 
 
