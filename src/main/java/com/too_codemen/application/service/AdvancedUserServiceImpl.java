@@ -3,8 +3,14 @@ package com.too_codemen.application.service;
 import com.too_codemen.application.model.AdvancedUser;
 import com.too_codemen.application.repository.AdvancedUserRepository;
 import com.too_codemen.application.repository.AdvancedUserRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class AdvancedUserServiceImpl implements AdvancedUserService{
+    @Autowired
     private AdvancedUserRepositoryImpl advancedUserRepositoryImpl;
 
     @Override

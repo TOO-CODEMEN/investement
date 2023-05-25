@@ -1,92 +1,80 @@
 package com.too_codemen.application.repository;
 
 import com.too_codemen.application.model.Expenses;
-import com.too_codemen.application.repository.ExpensesRepository;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 @Repository
-public class ExpensesRepositoryImpl implements ExpensesRepository {
-    private SessionFactory sessionFactory;
+public class ExpensesRepositoryImpl{
 
-    public ExpensesRepositoryImpl() {
-        // Инициализация и конфигурация sessionFactory
-        Configuration configuration = new Configuration().configure();
-        sessionFactory = configuration.buildSessionFactory();
-    }
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-    @Override
     public Expenses getExpensesById(Long id) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        String sql = "SELECT * FROM expenses WHERE id=?";
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{id}, new ExpensesRowMapper());
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
 
-        Expenses expenses = session.get(Expenses.class, id);
-
-        transaction.commit();
-        session.close();
-
-        return expenses;
     }
 
-    @Override
     public Expenses addExpenses(Expenses expenses) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
-        session.save(expenses);
-
-        transaction.commit();
-        session.close();
-
+        String sql1 = "INSERT INTO expenses (INN, industry, headcount, productionArea," +
+                "productionSquare, plannedAreaOfConstruction, equipment, typeOfBuilding," +
+                "squareOfBuilding, accountingServices, patent, others) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql1, expenses.getINN(), expenses.getIndustry(), expenses.getHeadcount(), expenses.getProductionArea(), expenses.getProductionSquare(),
+                expenses.getPlannedAreaOfConstruction(), expenses.getEquipment(), expenses.getTypeOfBuilding(), expenses.getSquareOfBuilding(), expenses.getAccountingServices(),
+                expenses.getPatent(), expenses.getOthers());
         return expenses;
     }
 
-    @Override
-    public Expenses updateExpensesById(Long id, Expenses expenses) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
-        Expenses existingExpenses = session.get(Expenses.class, id);
-        if (existingExpenses != null) {
-            existingExpenses.setINN(expenses.getINN());
-            existingExpenses.setIndustry(expenses.getIndustry());
-            existingExpenses.setHeadcount(expenses.getHeadcount());
-            existingExpenses.setProductionArea(expenses.getProductionArea());
-            existingExpenses.setProductionSquare(expenses.getProductionSquare());
-            existingExpenses.setPlannedAreaOfConstruction(expenses.getPlannedAreaOfConstruction());
-            existingExpenses.setEquipment(expenses.getEquipment());
-            existingExpenses.setTypeOfBuilding(expenses.getTypeOfBuilding());
-            existingExpenses.setSquareOfBuilding(expenses.getSquareOfBuilding());
-            existingExpenses.setAccountingServices(expenses.getAccountingServices());
-            existingExpenses.setPatent(expenses.getPatent());
-            existingExpenses.setOthers(expenses.getOthers());
-            existingExpenses.setAdvancedUserId(expenses.getAdvancedUserId());
-
-            session.update(existingExpenses);
-        }
-
-        transaction.commit();
-        session.close();
-
-        return existingExpenses;
+    @PostConstruct
+    public void createExpensesTable() {
+        jdbcTemplate.execute("CREATE TABLE expenses (\n" +
+                "  id INT AUTO_INCREMENT PRIMARY KEY,\n" +
+                "  INN INT,\n" +
+                "  industry VARCHAR(255),\n" +
+                "  headcount INT,\n" +
+                "  productionArea VARCHAR(255),\n" +
+                "  productionSquare INT,\n" +
+                "  plannedAreaOfConstruction INT,\n" +
+                "  equipment VARCHAR(255),\n" +
+                "  typeOfBuilding VARCHAR(255),\n" +
+                "  squareOfBuilding INT,\n" +
+                "  accountingServices INT,\n" +
+                "  patent INT,\n" +
+                "  others INT\n" +
+                ");\n");
     }
 
-    @Override
-    public Expenses deleteExpensesById(Long id) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+    private static class ExpensesRowMapper implements RowMapper<Expenses> {
 
-        Expenses expenses = session.get(Expenses.class, id);
-        if (expenses != null) {
-            session.delete(expenses);
+        @Override
+        public Expenses mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Expenses expenses = new Expenses();
+            expenses.setId(rs.getLong("id"));
+            expenses.setINN(rs.getInt("INN"));
+            expenses.setIndustry(rs.getString("industry"));
+            expenses.setHeadcount(rs.getInt("headcount"));
+            expenses.setProductionArea(rs.getString("productionArea"));
+            expenses.setProductionSquare(rs.getInt("productionSquare"));
+            expenses.setPlannedAreaOfConstruction(rs.getInt("plannedAreaOfConstruction"));
+            expenses.setEquipment(rs.getString("equipment"));
+            expenses.setTypeOfBuilding(rs.getString("typeOfBuilding"));
+            expenses.setSquareOfBuilding(rs.getInt("squareOfBuilding"));
+            expenses.setAccountingServices(rs.getInt("accountingServices"));
+            expenses.setPatent(rs.getInt("patent"));
+            expenses.setOthers(rs.getInt("others"));
+            return expenses;
         }
-
-        transaction.commit();
-        session.close();
-
-        return expenses;
     }
 }
