@@ -5,10 +5,12 @@ import validator from 'validator';
 import { InputMask } from 'primereact/inputmask';
 import Select from 'react-select'
 import { useNavigate } from 'react-router-dom'
+import { createUser } from "../../../firebase";
+import { startSession } from "../../../session";
 
 
 export const Register = () => {
-    const navigation = useNavigate()
+    const navigate = useNavigate()
 
     const [register, setRegister] = useState({
         name: "",
@@ -27,7 +29,7 @@ export const Register = () => {
         { value: 'Пищевая промышленность', label: 'Пищевая промышленность' },
     ]
 
-    const submitHandler = event => {
+    const submitHandler = async event => {
         event.preventDefault();
 
         if (validator.isEmpty(register.name)) {
@@ -41,8 +43,13 @@ export const Register = () => {
         } else if (!validator.isStrongPassword(register.password, { minSymbols: 0 })) {
             alert("Пароль должен состоять из одной строчной, прописной буквы и цифры, не менее 8 символов")
         } else {
-            alert("Успешно!")
-            navigation("/main")
+            try {
+                let registerResponse = await createUser(register.email, register.password);
+                startSession(registerResponse.user);
+                navigate("/main");
+              } catch (error) {
+                alert("Неверный логин или пароль")
+              }
         }
     }
 

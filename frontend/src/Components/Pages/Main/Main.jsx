@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Input from '../../UI/Input/Input'
 import Select from 'react-select'
 import cl from './Main.module.css'
+import { endSession, getSession, isLoggedIn } from "../../../session";
 
 
 const Main = () => {
@@ -12,9 +14,21 @@ const Main = () => {
         objectsArea: "",
     })
 
+    const navigate = useNavigate()
+
     const options = [
         { value: 'Пищевая промышленность', label: 'Пищевая промышленность' },
     ]
+
+    useEffect(() => {
+        let session = getSession();
+        console.log("Your access token is: " + session.accessToken);
+    }, []);
+
+    const onLogout = () => {
+        endSession();
+        navigate("/login");
+    }
 
     return (
         <div className='container'>

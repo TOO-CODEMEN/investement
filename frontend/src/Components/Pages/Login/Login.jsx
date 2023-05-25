@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cl from "./Login.module.css"
 import Input from "../../UI/Input/Input"
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { signInUser } from "../../../firebase";
+import { startSession } from "../../../session";
+import { isLoggedIn } from "../../../session";
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const onSubmitHandler = (event) => {
+    const navigate = useNavigate()
+
+    const onSubmitHandler = async (event) => {
         event.preventDefault();
 
         if (!email || !password) {
@@ -15,7 +20,21 @@ const Login = () => {
             return;
         }
 
+        try {
+            let loginResponse = await signInUser(email, password);
+            startSession(loginResponse.user);
+            navigate("/main");
+        } catch (error) {
+            console.error(error.message);
+        }
+
     }
+
+    useEffect(() => {
+        if (isLoggedIn()) {
+            navigate("/main")
+        }
+    }, [navigate])
 
     return (
         <form className={cl.Authorization} onSubmit={
