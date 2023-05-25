@@ -21,7 +21,7 @@ const Main = () => {
         hardware: "",
         objectType: "",
         objectArea: "",
-        accounting: true,
+        accounting: false,
         patent: false
     })
 
