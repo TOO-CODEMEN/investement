@@ -7,12 +7,12 @@ import { getSession, isLoggedIn, endSession } from "../../session";
 const Header = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
+    let session = getSession();
 
     useEffect(() => {
-        let session = getSession();
         setEmail(session.email)
         console.log("Your access token is: " + session.accessToken);
-    }, [email]);
+    }, [session.email]);
 
     const onLogout = () => {
         endSession();
