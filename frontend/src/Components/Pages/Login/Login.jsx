@@ -7,15 +7,27 @@ const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+
+        if (!email || !password) {
+            alert("Пожалуйста, введите почту и пароль!");
+            return;
+        }
+
+    }
+
     return (
-        <div className={cl.Authorization}>
+        <form className={cl.Authorization} onSubmit={
+            onSubmitHandler
+        }>
             <div className={cl.Input}><Input value={email} setValue={setEmail} type="text" label="E-mail" /></div>
             <div className={cl.Input}><Input value={password} setValue={setPassword} type="password" label="Пароль" /></div>
             <button className={cl.Button}>Авторизоваться</button>
             <NavLink to={'/register'} className={cl.register__link}>
                 Зарегистрироваться
             </NavLink>
-        </div>
+        </form>
     )
 }
 
