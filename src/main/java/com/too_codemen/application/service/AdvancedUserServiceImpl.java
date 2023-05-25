@@ -9,27 +9,27 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class AdvancedUserServiceImpl implements AdvancedUserService{
-    @Autowired
-    private AdvancedUserRepositoryImpl advancedUserRepositoryImpl;
-
-    @Override
-    public AdvancedUser getAdvancedUserById(Long id) {
-        return advancedUserRepositoryImpl.getAdvancedUserById(id);
-    }
-
-    @Override
-    public AdvancedUser addAdvancedUser(AdvancedUser advancedUser) {
-        return advancedUserRepositoryImpl.addAdvancedUser(advancedUser);
-    }
-
-    @Override
-    public AdvancedUser updateAdvancedUserById(Long id, AdvancedUser advancedUser) {
-        return advancedUserRepositoryImpl.updateAdvancedUserById(id, advancedUser);
-    }
-
-    @Override
-    public AdvancedUser deleteAdvancedUserById(Long id) {
-        return advancedUserRepositoryImpl.deleteAdvancedUserById(id);
-    }
+public class AdvancedUserServiceImpl{
+//    @Autowired
+//    private AdvancedUserRepositoryImpl advancedUserRepositoryImpl;
+//
+//    @Override
+//    public AdvancedUser getAdvancedUserById(Long id) {
+//        return advancedUserRepositoryImpl.getAdvancedUserById(id);
+//    }
+//
+//    @Override
+//    public AdvancedUser addAdvancedUser(AdvancedUser advancedUser) {
+//        return advancedUserRepositoryImpl.addAdvancedUser(advancedUser);
+//    }
+//
+//    @Override
+//    public AdvancedUser updateAdvancedUserById(Long id, AdvancedUser advancedUser) {
+//        return advancedUserRepositoryImpl.updateAdvancedUserById(id, advancedUser);
+//    }
+//
+//    @Override
+//    public AdvancedUser deleteAdvancedUserById(Long id) {
+//        return advancedUserRepositoryImpl.deleteAdvancedUserById(id);
+//    }
 }
