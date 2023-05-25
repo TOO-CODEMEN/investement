@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import Input from '../../UI/Input/Input'
 import Select from 'react-select'
 import cl from './Main.module.css'
+import { Modal } from '../../UI/Modal/Modal'
 import { endSession, getSession, isLoggedIn } from "../../../session";
 
 
 const Main = () => {
+
+    const [modalActive, setModalActive] = useState(false)
+
     const [calc, setCalc] = useState({
         industry: "",
         team: "",
@@ -30,14 +34,28 @@ const Main = () => {
     //     navigate("/login");
     // }
 
+    const onSubmitHandler = (e) => {
+        e.preventDefault()
+
+        if(!calc.industry || !calc.team || !calc.landArea || !calc.objectsArea) {
+            alert('Введите все данные!')
+            return;
+        }
+        
+        console.log(calc)
+
+        setModalActive(true)
+    }
+
     return (
         <div className='container'>
             <h1 className={cl.head}>
                 Отчет о возможных затрататах на создание промышленного производства в городе Москве
             </h1>
 
-            <form className={cl.form}>
-
+            <form className={cl.form} onSubmit={
+                onSubmitHandler
+            }>
                 <div className={cl.flex__container}>
                     <div className={cl.input} >
                         <label>
@@ -47,7 +65,8 @@ const Main = () => {
                             options={options}
                             onChange={(event) => setCalc((value) => (
                                 {
-                                    ...value
+                                    ...value,
+                                    ['industry']: event.value
                                 }))}
                             styles={{
                                 control: (baseStyles, state) => ({
@@ -72,15 +91,19 @@ const Main = () => {
                     </div>
                 </div>
 
-                <div className={cl.input}><Input type="text" label="Штатная численность сотрудников" value={calc.team} setValue={setCalc} /></div>
-                <div className={cl.input}><Input type="text" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.landArea} setValue={setCalc} /></div>
-                <div className={cl.input}><Input type="text" label="Планируемая площадь объектов капитального строительства" value={calc.objectArea} setValue={setCalc} /></div>
+                <div className={cl.input}><Input type="text" label="Штатная численность сотрудников" value={calc.team} setValue={setCalc} object={calc} typeObject={'team'}/></div>
+                <div className={cl.input}><Input type="text" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.landArea} setValue={setCalc} object={calc} typeObject={'landArea'}/></div>
+                <div className={cl.input}><Input type="text" label="Планируемая площадь объектов капитального строительства" value={calc.objectsArea} setValue={setCalc} object={calc} typeObject={'objectsArea'}/></div>
 
 
                 <button className={cl.form__button}>
                     Рассчитать
                 </button>
             </form >
+
+            <Modal active={modalActive} setActive={setModalActive}>
+                Привет!
+            </Modal>
         </div>
     )
 }
