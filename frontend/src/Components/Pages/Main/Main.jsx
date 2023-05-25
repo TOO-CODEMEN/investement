@@ -5,6 +5,7 @@ import Select from 'react-select'
 import cl from './Main.module.css'
 import { Modal } from '../../UI/Modal/Modal'
 import { endSession, getSession, isLoggedIn } from "../../../session";
+import { Loader } from '../../UI/loader'
 
 
 const Main = () => {
@@ -102,7 +103,11 @@ const Main = () => {
             </form >
 
             <Modal active={modalActive} setActive={setModalActive}>
-                Привет!
+                <div>
+                    Подсчет данных
+                </div>
+                <br/>
+                <Loader />
             </Modal>
         </div>
     )

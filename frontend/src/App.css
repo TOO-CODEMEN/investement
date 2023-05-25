@@ -1,5 +1,10 @@
 @import url("./utils/normalize.css");
 
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
 .container {
   padding: 0px 23px 0px 23px;
 }
@@ -64,4 +69,15 @@
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
+}
+
+.loader-wrapper {
+  width: 100%;
+}
+
+.loader-wrapper img {
+  display: block;
+  width: 80px;
+  margin: 0 auto;
+  animation: spin 1s ease-in-out infinite;
 }
