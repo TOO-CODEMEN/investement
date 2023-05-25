@@ -4,7 +4,7 @@
 > TODO
 
 ## Технологический стек
-- __Backend:__ Java, Spring, MySQL
+- __Backend:__ Java, Spring, MySQL, Firebase
 - __Frontend:__ React, Redux, CSS, PrimeReact
 - Docker
 
