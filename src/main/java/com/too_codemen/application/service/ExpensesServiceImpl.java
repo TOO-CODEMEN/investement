@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ExpensesServiceImpl {
@@ -19,6 +21,10 @@ public class ExpensesServiceImpl {
 
     public Expenses addExpenses(Expenses expenses) {
         return expensesRepositoryImpl.addExpenses(expenses);
+    }
+
+    public List<Expenses> getAllExpenses() {
+        return expensesRepositoryImpl.getAllExpenses();
     }
 
 //    public Expenses updateExpensesById(Long id, Expenses expenses) {

@@ -7,12 +7,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/expenses")
 public class ExpensesController {
 
     @Autowired
     private  ExpensesServiceImpl expensesService;
+
+    @GetMapping
+    public List<Expenses> getAllExpenses() {
+        return expensesService.getAllExpenses();
+    }
 
 
     @GetMapping("/{id}")

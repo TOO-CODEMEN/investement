@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class ExpensesRepositoryImpl{
@@ -25,6 +26,11 @@ public class ExpensesRepositoryImpl{
             return null;
         }
 
+    }
+
+    public List<Expenses> getAllExpenses() {
+        String sql = "SELECT * FROM expenses";
+        return jdbcTemplate.query(sql, new ExpensesRowMapper());
     }
 
     public Expenses addExpenses(Expenses expenses) {
