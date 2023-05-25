@@ -84,77 +84,80 @@ const Main = () => {
             <form className={cl.form} onSubmit={
                 onSubmitHandler
             }>
-                <div className={cl.input} >
-                    <label>
-                        Отрасль ведения хоз.деятельности
-                    </label>
-                    <Select
-                        options={industryOptions}
-                        onChange={(event) => setCalc((value) => (
-                            {
-                                ...value,
-                                ['industry']: event.value
-                            }))}
-                        styles={{
-                            control: (baseStyles, state) => ({
-                                ...baseStyles,
-                                borderRadius: 10,
-                                border: '2px solid #CCCCCC',
-                                padding: 2,
-                                fontSize: 15,
-                            }),
-                        }}
+                <div className={cl.flex__container}>
+                    <div className={cl.input} >
+                        <label>
+                            Отрасль ведения хоз.деятельности
+                        </label>
+                        <Select
+                            options={industryOptions}
+                            onChange={(event) => setCalc((value) => (
+                                {
+                                    ...value,
+                                    ['industry']: event.value
+                                }))}
+                            styles={{
+                                control: (baseStyles, state) => ({
+                                    ...baseStyles,
+                                    borderRadius: 10,
+                                    border: '2px solid #CCCCCC',
+                                    padding: 2,
+                                    fontSize: 15,
+                                }),
+                            }}
 
-                        theme={(theme) => ({
-                            ...theme,
-                            borderRadius: 0,
-                            colors: {
-                                ...theme.colors,
-                                primary25: '#fff',
-                                primary: 'red',
-                            },
-                        })}
-                    />
+                            theme={(theme) => ({
+                                ...theme,
+                                borderRadius: 0,
+                                colors: {
+                                    ...theme.colors,
+                                    primary25: '#fff',
+                                    primary: 'red',
+                                },
+                            })}
+                        />
+                    </div>
+
+                    <div className={cl.input}><Input type="text" label="Штатная численность сотрудников" value={calc.team} setValue={setCalc} object={calc} typeObject={'team'} /></div>
+                    <div className={cl.input}><Input type="text" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.landArea} setValue={setCalc} object={calc} typeObject={'landArea'} /></div>
                 </div>
 
-                <div className={cl.input}><Input type="text" label="Штатная численность сотрудников" value={calc.team} setValue={setCalc} object={calc} typeObject={'team'} /></div>
-                <div className={cl.input}><Input type="text" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.landArea} setValue={setCalc} object={calc} typeObject={'landArea'} /></div>
-                <div className={cl.input}><Input type="text" label="Планируемая площадь объектов капитального строительства" value={calc.objectsArea} setValue={setCalc} object={calc} typeObject={'objectsArea'} /></div>
-
-                <div className={cl.input} >
-                    <label>
-                        Предполагаемое к использованию оборудование
-                    </label>
-                    <Select
-                        options={hardwareOptions}
-                        onChange={(event) => setCalc((value) => (
-                            {
-                                ...value,
-                                ['hardware']: event.value
-                            }))}
-                        styles={{
-                            control: (baseStyles, state) => ({
-                                ...baseStyles,
-                                borderRadius: 10,
-                                border: '2px solid #CCCCCC',
-                                padding: 2,
-                                fontSize: 15,
-                            }),
-                        }}
-
-                        theme={(theme) => ({
-                            ...theme,
-                            borderRadius: 0,
-                            colors: {
-                                ...theme.colors,
-                                primary25: '#fff',
-                                primary: 'red',
-                            },
-                        })}
-                    />
+                <div className={cl.flex__container}>
+                    <div className={cl.input}><Input type="text" label="Планируемая площадь объектов капитального строительства" value={calc.objectsArea} setValue={setCalc} object={calc} typeObject={'objectsArea'} /></div>
+                    <div className={cl.input} >
+                        <label>
+                            Предполагаемое к использованию оборудование
+                        </label>
+                        <Select
+                            options={hardwareOptions}
+                            onChange={(event) => setCalc((value) => (
+                                {
+                                    ...value,
+                                    ['hardware']: event.value
+                                }))}
+                            styles={{
+                                control: (baseStyles, state) => ({
+                                    ...baseStyles,
+                                    borderRadius: 10,
+                                    border: '2px solid #CCCCCC',
+                                    padding: 2,
+                                    fontSize: 15,
+                                }),
+                            }}
+                            theme={(theme) => ({
+                                ...theme,
+                                borderRadius: 0,
+                                colors: {
+                                    ...theme.colors,
+                                    primary25: '#fff',
+                                    primary: 'red',
+                                },
+                            })}
+                        />
+                    </div>
                 </div>
 
-                <div className={cl.object}>
+                <div className={cl.flex__container}>
                     <div className={cl.input} >
                         <label>
                             Тип объекта

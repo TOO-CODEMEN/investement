@@ -13,20 +13,21 @@
     margin-top: 15px;
 }
 
-.object {
+.flex__container {
     display: flex;
     margin-bottom: 23px;
     width: 100%;
+    align-items: flex-end;
 }
 
 .input {
     display: block;
     margin-bottom: 20px;
-    width: 100%;
+    max-width: 300px;
 }
 
 .input:not(:last-child) {
-    margin-right: 10px;
+    margin-right: 15px;
 }   
 
 .form__button {
