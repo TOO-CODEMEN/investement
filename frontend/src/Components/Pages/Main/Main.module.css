@@ -15,16 +15,20 @@
 
 .flex__container {
     display: flex;
-    flex-wrap: wrap;
     margin-bottom: 23px;
     width: 100%;
+    align-items: flex-end;
 }
 
 .input {
     display: block;
     margin-bottom: 20px;
-    margin-right: 10px;
+    max-width: 300px;
 }
+
+.input:not(:last-child) {
+    margin-right: 15px;
+}   
 
 .form__button {
     background-color: #CC2222;
