@@ -41,7 +41,16 @@ const Main = () => {
         { value: 'Складское помещение', label: 'Складское помещение' },
     ]
 
-    
+    const [patent, setPatent] = useState(false)
+    const [accounting, setAccounting] = useState(false)
+
+    const patentChange = () => {
+        setPatent(!patent);
+    };
+
+    const accountingChange = () => {
+        setAccounting(!accounting);
+    };
 
     // useEffect(() => {
     //     let session = getSession();
@@ -181,8 +190,8 @@ const Main = () => {
                     <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.objectArea} setValue={setCalc} object={calc} typeObject={'objectArea'} /></div>
                 </div>
 
-                <Checkbox id="accounting" label="Предоставление бухгалтерских услуг" name="accounting" value="accounting"/>
-                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" value="patent"/>
+                <Checkbox id="accounting" label="Предоставление бухгалтерских услуг" name="accounting" value="accounting" checked={accounting} onChange={accountingChange} />
+                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" value="patent" checked={patent} onChange={patentChange} />
 
                 <button className={cl.form__button}>
                     Рассчитать
