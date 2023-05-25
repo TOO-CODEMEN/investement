@@ -20,15 +20,15 @@ const Main = () => {
         { value: 'Пищевая промышленность', label: 'Пищевая промышленность' },
     ]
 
-    useEffect(() => {
-        let session = getSession();
-        console.log("Your access token is: " + session.accessToken);
-    }, []);
+    // useEffect(() => {
+    //     let session = getSession();
+    //     console.log("Your access token is: " + session.accessToken);
+    // }, []);
 
-    const onLogout = () => {
-        endSession();
-        navigate("/login");
-    }
+    // const onLogout = () => {
+    //     endSession();
+    //     navigate("/login");
+    // }
 
     return (
         <div className='container'>

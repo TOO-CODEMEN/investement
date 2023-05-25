@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import cl from './Header.module.css'
 import logo from '../../assets/img/logo.png'
-import { getSession, isLoggedIn } from "../../session";
+import { getSession, isLoggedIn, endSession } from "../../session";
 
 const Header = () => {
     const navigate = useNavigate()
@@ -13,6 +13,11 @@ const Header = () => {
         setEmail(session.email)
         console.log("Your access token is: " + session.accessToken);
     }, [email]);
+
+    const onLogout = () => {
+        endSession();
+        navigate("/main")
+    }
 
     return (
         <div className={cl.Header}>
@@ -27,7 +32,13 @@ const Header = () => {
                                 <div className={cl.authorization__link}><NavLink to="/login">Вход</NavLink></div>
                                 <div className={cl.authorization__link}><NavLink to="/register">Регистрация</NavLink></div>
                             </>
-                        ) : <div className={cl.authorization__link}>{email}</div> 
+                        ) :
+                            <>
+                                <div className={cl.authorization__link}>{email}</div>
+                                <div className={cl.authorization__link} onClick={
+                                    onLogout
+                                }>Выйти</div>
+                            </>
                     }
                 </>
 
