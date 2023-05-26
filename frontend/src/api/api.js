@@ -13,4 +13,8 @@ export const mainAPI = {
     postExpenses(object) {
         return instance.post(`/api/expenses`, object)
     },
-}
+
+    getCosts(object) {
+        return instance.post(`/api/totalcost`, object)
+    }
+ }

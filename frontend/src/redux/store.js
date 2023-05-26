@@ -7,10 +7,10 @@ import {
     createStore
 } from 'redux';
 
-import { expensesReducer } from './expenses-reducer';
+import { mainReducer } from './main-reducer';
 
 const reducers = combineReducers({
-    expenses: expensesReducer
+    main: mainReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
