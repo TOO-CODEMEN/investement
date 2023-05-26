@@ -3,16 +3,20 @@ import { useNavigate } from 'react-router-dom'
 import Input from '../../UI/Input/Input'
 import Select from 'react-select'
 import cl from './Main.module.css'
-import { Modal } from '../../UI/Modal/Modal'
+import { Modal } from '../../Modal/Modal'
 import { endSession, getSession, isLoggedIn } from "../../../session";
 import { Loader } from '../../UI/loader'
 import Checkbox from '../../UI/Checkbox/Checkbox'
+import { Map } from '../../UI/Map/Map'
 
 
 const Main = () => {
 
+    // Состояние модальных окон
     const [modalActive, setModalActive] = useState(false)
-
+    const [modalMapActive, setModalMapActive] = useState(false)
+ 
+    // Состояние объекта формы
     const [calc, setCalc] = useState({
         industry: "",
         team: "",
@@ -22,22 +26,26 @@ const Main = () => {
         objectType: "",
         objectArea: "",
         accounting: false,
-        patent: false
+        patent: false,
+        territory: ""
     })
 
-
+    //Хук использования навигации
     const navigate = useNavigate()
 
+    //Опции для селекта отрасли ведения хозяйста
     const industryOptions = [
         { value: 'Пищевая промышленность', label: 'Пищевая промышленность' },
     ]
 
+    //Опции для селекта оборудования
     const hardwareOptions = [
         { value: 'Токарные станки', label: 'Токарные станки' },
         { value: 'Фрезерные станки', label: 'Фрезерные станки' },
         { value: 'Разрезные станки', label: 'Разрезные станки' },
     ]
 
+    //Опции для селекта типа объекта
     const objectTypeOptions = [
         { value: 'Офисное здание', label: 'Офисное здание' },
         { value: 'Складское помещение', label: 'Складское помещение' },
@@ -53,6 +61,7 @@ const Main = () => {
     //     navigate("/login");
     // }
 
+    // фукнция, которая срабатывает при отправке формы
     const onSubmitHandler = (e) => {
         e.preventDefault()
 
@@ -146,6 +155,12 @@ const Main = () => {
                             })}
                         />
                     </div>
+
+                    <a href='#' onClick={
+                        () => setModalMapActive(true)
+                    }>
+                        {calc.territory ? calc.territory : "Территория расположения объекта"}
+                    </a>
                 </div>
 
                 <div className={cl.flex__container}>
@@ -198,6 +213,14 @@ const Main = () => {
                 </div>
                 <br />
                 <Loader />
+            </Modal>
+
+            <Modal active={modalMapActive} setActive={setModalMapActive}>
+                <div>
+                    Выберите расположение
+                </div>
+                <br />
+                <Map value={calc.territory} setValue = {calc.territory} typeObject = {'territory'}/>
             </Modal>
         </div>
     )
