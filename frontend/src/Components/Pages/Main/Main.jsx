@@ -8,6 +8,7 @@ import { endSession, getSession, isLoggedIn } from "../../../session";
 import { Loader } from '../../UI/loader'
 import Checkbox from '../../UI/Checkbox/Checkbox'
 import { MapForm } from '../../UI/Map/Map'
+import { industryOptions, hardwareOptions, objectTypeOptions } from '../../../data/data'
 
 
 const Main = () => {
@@ -32,24 +33,6 @@ const Main = () => {
 
     //Хук использования навигации
     const navigate = useNavigate()
-
-    //Опции для селекта отрасли ведения хозяйста
-    const industryOptions = [
-        { value: 'Пищевая промышленность', label: 'Пищевая промышленность' },
-    ]
-
-    //Опции для селекта оборудования
-    const hardwareOptions = [
-        { value: 'Токарные станки', label: 'Токарные станки' },
-        { value: 'Фрезерные станки', label: 'Фрезерные станки' },
-        { value: 'Разрезные станки', label: 'Разрезные станки' },
-    ]
-
-    //Опции для селекта типа объекта
-    const objectTypeOptions = [
-        { value: 'Офисное здание', label: 'Офисное здание' },
-        { value: 'Складское помещение', label: 'Складское помещение' },
-    ]
 
     // useEffect(() => {
     //     let session = getSession();

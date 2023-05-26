@@ -7,6 +7,7 @@ import Select from 'react-select'
 import { useNavigate } from 'react-router-dom'
 import { createUser } from "../../../firebase";
 import { startSession } from "../../../session";
+import { industryOptions } from '../../../data/data';
 
 
 export const Register = () => {
@@ -24,10 +25,6 @@ export const Register = () => {
         city: "",
         job: ""
     })
-
-    const options = [
-        { value: 'Пищевая промышленность', label: 'Пищевая промышленность' },
-    ]
 
     const submitHandler = async event => {
         event.preventDefault();
@@ -86,7 +83,7 @@ export const Register = () => {
                             Отрасль ведения хоз.деятельности
                         </label>
                         <Select
-                            options={options}
+                            options={industryOptions}
                             onChange={(event) => setRegister((value) => (
                                 {
                                     ...value,
