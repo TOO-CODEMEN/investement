@@ -30,10 +30,9 @@ export const MapForm = (props) => {
                         openHintOnHover: true,
                     }} properties={
                         {
-                            iconContent: el.name,
-                            hintContent: el.name
+                            iconCaption: el.name,
                         }
-                    } />
+                    }/>
                 ))}
                 <ZoomControl options={{ float: "right" }} />
             </Map>
