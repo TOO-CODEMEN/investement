@@ -21,6 +21,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.boot.version>2.7.1</spring.boot.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>AsposeJavaAPI</id>
+            <name>Aspose Java API</name>
+            <url>https://repository.aspose.com/repo/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
 
         <dependency>
@@ -73,6 +82,16 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.6.0.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-pdf</artifactId>
+            <version>21.6</version>
+        </dependency>
+
 
 
     </dependencies>

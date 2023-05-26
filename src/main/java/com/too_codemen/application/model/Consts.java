@@ -50,12 +50,23 @@ public class Consts {
     public static final double juridicalPersonRegistration = 4000;
 
 
+    public static final double medicine = milkFoodIndustry * 5.1 / 100;
+
+    public static final double pension = milkFoodIndustry * 22 / 100;
+
+    public static final double incapacityForWork = milkFoodIndustry * 2.9 / 100 ;
+
+
     //Result
-    public static final double result = (expenses.headcount * milkFoodIndustry + landTaxTest + propertyTaxTest + AccountingCost + soloProprietorRegistration + capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000000 ;
+    public static final double result = (expenses.headcount * milkFoodIndustry + expenses.headcount * milkFoodIndustry * 0.3 + landTaxTest + propertyTaxTest + AccountingCost + soloProprietorRegistration + capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000000 ;
     public static final double staff = (expenses.headcount * milkFoodIndustry) / 1000000 ;
     public static final double realEstate = (capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000000 ;
     public static final double taxes = (landTaxTest + propertyTaxTest) / 1000000 ;
     public static final double services = (AccountingCost + soloProprietorRegistration) / 1000000 ;
+
+    public static final double sumMedicine = expenses.headcount * medicine;
+    public static final double sumPension = expenses.headcount * pension;
+
 
 
 
