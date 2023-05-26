@@ -51,11 +51,11 @@ public class Consts {
 
 
     //Result
-    public static final double result = (expenses.headcount * milkFoodIndustry + landTaxTest + propertyTaxTest + AccountingCost + soloProprietorRegistration + capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000 ;
-    public static final double staff = (expenses.headcount * milkFoodIndustry) / 1000 ;
-    public static final double realEstate = (capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000 ;
-    public static final double taxes = (landTaxTest + propertyTaxTest) / 1000 ;
-    public static final double services = (AccountingCost + soloProprietorRegistration) / 1000 ;
+    public static final double result = (expenses.headcount * milkFoodIndustry + landTaxTest + propertyTaxTest + AccountingCost + soloProprietorRegistration + capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000000 ;
+    public static final double staff = (expenses.headcount * milkFoodIndustry) / 1000000 ;
+    public static final double realEstate = (capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000000 ;
+    public static final double taxes = (landTaxTest + propertyTaxTest) / 1000000 ;
+    public static final double services = (AccountingCost + soloProprietorRegistration) / 1000000 ;
 
 
 
