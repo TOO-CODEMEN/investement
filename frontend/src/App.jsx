@@ -16,18 +16,7 @@ function App() {
           <Route path="/register" Component={Register} />
           <Route path="/login" Component={Login} />
           <Route path="/main" Component={Main} />
-          <>
-                {
-                    !isLoggedIn() ? (
-                        <>
-                            <Route path="/admin" Component={Login} />
-                        </>
-                    ) :
-                        <>
-                            <Route path="/admin" Component={Admin} />
-                        </>
-                }
-            </>
+          <Route path="/admin" Component={Admin} />
           <Route path="*" element={<Navigate to="/main" />} />
         </Routes>
       </div>
