@@ -6,6 +6,7 @@ import { startSession } from "../../../session";
 import { isLoggedIn } from "../../../session";
 import cl from "./Login.module.css"
 import Input from "../../UI/Input/Input"
+import { firebaseApi } from '../../../api/firebase-api';
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -29,6 +30,15 @@ const Login = () => {
             } else {
                 navigate("/main");
             }
+
+            const Data = {
+                email: email, 
+                password: password
+            }
+
+            firebaseApi.postFirebaseApi(Data).then(response => {
+                console.log(response)
+            })
         } catch (error) {
             alert("Неверный логин или пароль!");
         }
