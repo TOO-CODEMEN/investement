@@ -2,12 +2,10 @@ import React from 'react'
 import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
 import { placemarks } from '../../../data/data';
 
+import { defaultState } from '../../../data/data';
+
 
 export const MapForm = (props) => {
-    const defaultState = {
-        center: [55.751574, 37.573856],
-        zoom: 6,
-    };
 
     const onClickSubmit = (nameAdmin) => {
         props.setValue((value) => ({
