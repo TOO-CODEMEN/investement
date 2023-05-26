@@ -3,16 +3,21 @@ import { useNavigate } from 'react-router-dom'
 import Input from '../../UI/Input/Input'
 import Select from 'react-select'
 import cl from './Main.module.css'
-import { Modal } from '../../UI/Modal/Modal'
+import { Modal } from '../../Modal/Modal'
 import { endSession, getSession, isLoggedIn } from "../../../session";
 import { Loader } from '../../UI/loader'
 import Checkbox from '../../UI/Checkbox/Checkbox'
+import { MapForm } from '../../UI/Map/Map'
+import { industryOptions, hardwareOptions, objectTypeOptions } from '../../../data/data'
 
 
 const Main = () => {
 
+    // Состояние модальных окон
     const [modalActive, setModalActive] = useState(false)
+    const [modalMapActive, setModalMapActive] = useState(false)
 
+    // Состояние объекта формы
     const [calc, setCalc] = useState({
         industry: "",
         team: "",
@@ -22,26 +27,12 @@ const Main = () => {
         objectType: "",
         objectArea: "",
         accounting: false,
-        patent: false
+        patent: false,
+        territory: ""
     })
 
-
+    //Хук использования навигации
     const navigate = useNavigate()
-
-    const industryOptions = [
-        { value: 'Пищевая промышленность', label: 'Пищевая промышленность' },
-    ]
-
-    const hardwareOptions = [
-        { value: 'Токарные станки', label: 'Токарные станки' },
-        { value: 'Фрезерные станки', label: 'Фрезерные станки' },
-        { value: 'Разрезные станки', label: 'Разрезные станки' },
-    ]
-
-    const objectTypeOptions = [
-        { value: 'Офисное здание', label: 'Офисное здание' },
-        { value: 'Складское помещение', label: 'Складское помещение' },
-    ]
 
     // useEffect(() => {
     //     let session = getSession();
@@ -53,6 +44,7 @@ const Main = () => {
     //     navigate("/login");
     // }
 
+    // фукнция, которая срабатывает при отправке формы
     const onSubmitHandler = (e) => {
         e.preventDefault()
 
@@ -146,6 +138,22 @@ const Main = () => {
                             })}
                         />
                     </div>
+
+                    <div className={cl.input}>
+                        <label >
+                            Территория расположения объекта
+                        </label>
+                        <a
+                            href='#'
+                            onClick={
+                                () => setModalMapActive(true)
+                            }
+                            className={cl.map__button}
+                        >
+                            {calc.territory ? calc.territory : "Выбрать"}
+                        </a>
+
+                    </div>
                 </div>
 
                 <div className={cl.flex__container}>
@@ -184,8 +192,8 @@ const Main = () => {
                     <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.objectArea} setValue={setCalc} object={calc} typeObject={'objectArea'} /></div>
                 </div>
 
-                <Checkbox id="accounting" label="Предоставление бухгалтерских услуг" name="accounting" checked={calc.accounting} setChange={setCalc} typeObject = {'accounting'}/>
-                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent"  checked={calc.patent} setChange={setCalc} typeObject={'patent'}/>
+                <Checkbox id="accounting" label="Предоставление бухгалтерских услуг" name="accounting" checked={calc.accounting} setChange={setCalc} typeObject={'accounting'} />
+                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" checked={calc.patent} setChange={setCalc} typeObject={'patent'} />
 
                 <button className={cl.form__button}>
                     Рассчитать
@@ -198,6 +206,14 @@ const Main = () => {
                 </div>
                 <br />
                 <Loader />
+            </Modal>
+
+            <Modal active={modalMapActive} setActive={setModalMapActive}>
+                <div>
+                    Выберите расположение
+                </div>
+                <br />
+                <MapForm setValue={setCalc} typeObject={'territory'} setActive={setModalMapActive} />
             </Modal>
         </div>
     )
