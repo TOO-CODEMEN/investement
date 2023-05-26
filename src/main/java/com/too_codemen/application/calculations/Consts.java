@@ -1,9 +1,15 @@
-package com.too_codemen.application.model;
+package com.too_codemen.application.calculations;
 
-import com.too_codemen.application.model.Expenses;
+
 public class Consts {
 
-    static Expenses expenses;
+
+
+    static double region;
+    static double squareOfBuilding;
+    static double productionSquare;
+
+
 
     //1 square meter
     public static final double ВАО = 15492.36;
@@ -36,11 +42,11 @@ public class Consts {
 
     //average salary per worker
 
-    public static final double milkFoodIndustry = 85.5960103574483 * 1000;
+    public static final double maxSalary = 85.5960103574483 * 1000;
 
     //taxes
-    public static final double landTaxTest = 1000*ВАО*1.5/100;
-    public static final double propertyTaxTest = expenses.squareOfBuilding*ВАО*2.2/100;
+    public static final double landTaxTest = productionSquare*region*1.5/100;
+    public static final double propertyTaxTest = squareOfBuilding*region*2.2/100;
 
     //per month
     public static final double AccountingCost = 35000;
@@ -50,22 +56,14 @@ public class Consts {
     public static final double juridicalPersonRegistration = 4000;
 
 
-    public static final double medicine = milkFoodIndustry * 5.1 / 100;
+    public static final double medicine = maxSalary * 5.1 / 100;
 
-    public static final double pension = milkFoodIndustry * 22 / 100;
+    public static final double pension = maxSalary * 22 / 100;
 
-    public static final double incapacityForWork = milkFoodIndustry * 2.9 / 100 ;
+    public static final double incapacityForWork = maxSalary * 2.9 / 100 ;
 
 
-    //Result
-    public static final double result = (expenses.headcount * milkFoodIndustry + expenses.headcount * milkFoodIndustry * 0.3 + landTaxTest + propertyTaxTest + AccountingCost + soloProprietorRegistration + capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000000 ;
-    public static final double staff = (expenses.headcount * milkFoodIndustry) / 1000000 ;
-    public static final double realEstate = (capitalConstructionCost * expenses.plannedAreaOfConstruction) / 1000000 ;
-    public static final double taxes = (landTaxTest + propertyTaxTest) / 1000000 ;
-    public static final double services = (AccountingCost + soloProprietorRegistration) / 1000000 ;
 
-    public static final double sumMedicine = expenses.headcount * medicine;
-    public static final double sumPension = expenses.headcount * pension;
 
 
 
