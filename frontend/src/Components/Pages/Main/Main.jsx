@@ -7,7 +7,7 @@ import { Modal } from '../../Modal/Modal'
 import { endSession, getSession, isLoggedIn } from "../../../session";
 import { Loader } from '../../UI/loader'
 import Checkbox from '../../UI/Checkbox/Checkbox'
-import { Map } from '../../UI/Map/Map'
+import { MapForm } from '../../UI/Map/Map'
 
 
 const Main = () => {
@@ -15,7 +15,7 @@ const Main = () => {
     // Состояние модальных окон
     const [modalActive, setModalActive] = useState(false)
     const [modalMapActive, setModalMapActive] = useState(false)
- 
+
     // Состояние объекта формы
     const [calc, setCalc] = useState({
         industry: "",
@@ -156,11 +156,21 @@ const Main = () => {
                         />
                     </div>
 
-                    <a href='#' onClick={
-                        () => setModalMapActive(true)
-                    }>
-                        {calc.territory ? calc.territory : "Территория расположения объекта"}
-                    </a>
+                    <div className={cl.input}>
+                        <label >
+                            Территория расположения объекта
+                        </label>
+                        <a
+                            href='#'
+                            onClick={
+                                () => setModalMapActive(true)
+                            }
+                            className={cl.map__button}
+                        >
+                            {calc.territory ? calc.territory : "Выбрать"}
+                        </a>
+
+                    </div>
                 </div>
 
                 <div className={cl.flex__container}>
@@ -199,8 +209,8 @@ const Main = () => {
                     <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.objectArea} setValue={setCalc} object={calc} typeObject={'objectArea'} /></div>
                 </div>
 
-                <Checkbox id="accounting" label="Предоставление бухгалтерских услуг" name="accounting" checked={calc.accounting} setChange={setCalc} typeObject = {'accounting'}/>
-                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent"  checked={calc.patent} setChange={setCalc} typeObject={'patent'}/>
+                <Checkbox id="accounting" label="Предоставление бухгалтерских услуг" name="accounting" checked={calc.accounting} setChange={setCalc} typeObject={'accounting'} />
+                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" checked={calc.patent} setChange={setCalc} typeObject={'patent'} />
 
                 <button className={cl.form__button}>
                     Рассчитать
@@ -220,7 +230,7 @@ const Main = () => {
                     Выберите расположение
                 </div>
                 <br />
-                <Map value={calc.territory} setValue = {calc.territory} typeObject = {'territory'}/>
+                <MapForm setValue={setCalc} typeObject={'territory'} setActive={setModalMapActive} />
             </Modal>
         </div>
     )
