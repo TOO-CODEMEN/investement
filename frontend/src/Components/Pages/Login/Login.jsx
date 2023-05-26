@@ -24,7 +24,11 @@ const Login = () => {
         try {
             let loginResponse = await signInUser(email, password);
             startSession(loginResponse.user);
-            navigate("/main");
+            if (email == "admin@admin.ru") {
+                navigate("/admin");
+            } else {
+                navigate("/main");
+            }
         } catch (error) {
             alert("Неверный логин или пароль!");
         }

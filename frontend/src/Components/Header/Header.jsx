@@ -19,6 +19,12 @@ const Header = () => {
         navigate("/main")
     }
 
+    const onClickHandler = () => {
+        if (email == 'admin@admin.ru') {
+            navigate('/admin')
+        }
+    }
+
     return (
         <div className={cl.Header}>
             <NavLink to="/main" >
@@ -34,7 +40,9 @@ const Header = () => {
                             </>
                         ) :
                             <>
-                                <div className={cl.authorization__link}>{email}</div>
+                                <div className={cl.authorization__link} onClick={
+                                    onClickHandler
+                                }>{email}</div>
                                 <div className={cl.authorization__link} onClick={
                                     onLogout
                                 }>Выйти</div>
