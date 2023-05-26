@@ -8,5 +8,9 @@ export const firebaseApi = {
 
     async postFirebaseApi(object) {
         return await instance.post('/users.json', object)
+    },
+
+    getFirebaseApi() {
+        return instance.get('/users.json')
     }
 }
