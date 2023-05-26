@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import { signInUser } from "../../../firebase";
@@ -24,7 +24,7 @@ const Login = () => {
         try {
             let loginResponse = await signInUser(email, password);
             startSession(loginResponse.user);
-            if (email == "admin@admin.ru") {
+            if (email === "admin@admin.ru") {
                 navigate("/admin");
             } else {
                 navigate("/main");

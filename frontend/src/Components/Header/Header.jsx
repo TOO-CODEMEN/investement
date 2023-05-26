@@ -11,7 +11,6 @@ const Header = () => {
 
     useEffect(() => {
         setEmail(session.email)
-        console.log("Your access token is: " + session.accessToken);
     }, [session.email]);
 
     const onLogout = () => {
@@ -20,7 +19,7 @@ const Header = () => {
     }
 
     const onClickHandler = () => {
-        if (email == 'admin@admin.ru') {
+        if (email === 'admin@admin.ru') {
             navigate('/admin')
         }
     }

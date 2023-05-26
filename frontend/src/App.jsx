@@ -5,7 +5,6 @@ import Main from './Components/Pages/Main/Main';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Register } from './Components/Pages/Registration/Register';
 import Admin from './Components/Pages/Admin/Admin';
-import { isLoggedIn } from "./session";
 
 function App() {
   return (

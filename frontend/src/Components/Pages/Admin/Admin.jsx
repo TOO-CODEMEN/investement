@@ -9,7 +9,7 @@ const Admin = () => {
         <div>
             <>
                 {
-                    session.email != "admin@admin.ru" ? (
+                    session.email !== "admin@admin.ru" ? (
                         <>
                            <div className="a">Ты кто такой?</div>
                         </>
