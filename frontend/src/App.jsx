@@ -5,9 +5,12 @@ import Main from './Components/Pages/Main/Main';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Register } from './Components/Pages/Registration/Register';
 import Admin from './Components/Pages/Admin/Admin';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 function App() {
   return (
+    <Provider store={store}>
     <BrowserRouter>
       <div className="App">
         <Header />
@@ -20,6 +23,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </Provider>
   );
 }
 
