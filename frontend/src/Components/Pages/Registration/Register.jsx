@@ -8,9 +8,10 @@ import { useNavigate } from 'react-router-dom'
 import { createUser } from "../../../firebase";
 import { startSession } from "../../../session";
 import { industryOptions } from '../../../data/data';
+import { connect } from 'react-redux'
+import { requestPostUser } from '../../../redux/firebase-reducer'
 
-
-export const Register = () => {
+const Register = ({ requestPostUser}) => {
     const navigate = useNavigate()
 
     const [register, setRegister] = useState({
@@ -44,6 +45,7 @@ export const Register = () => {
                 let registerResponse = await createUser(register.email, register.password);
                 startSession(registerResponse.user);
                 navigate("/main");
+                requestPostUser(register)
               } catch (error) {
                 alert("Неверный логин или пароль")
               }
@@ -124,3 +126,9 @@ export const Register = () => {
         </div >
     )
 }
+const mapStateToProps = (state) => ({
+    user: state.firebase.user,
+    isFetching: state.firebase.isFetching
+})
+
+export const RegisterContainer = connect(mapStateToProps, { requestPostUser })(Register)
