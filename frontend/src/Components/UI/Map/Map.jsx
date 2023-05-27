@@ -20,7 +20,7 @@ export const MapForm = (props) => {
         <YMaps>
             <Map defaultState={defaultState}>
                 {placemarks.map(el => (
-                     <Placemark geometry={el.coor} onClick={
+                    <Placemark geometry={el.coor} onClick={
                         () => onClickSubmit(el.name)
                     } options={{
                         iconColor: "#CC2222",
@@ -30,10 +30,11 @@ export const MapForm = (props) => {
                         {
                             iconCaption: el.name,
                         }
-                    }/>
+                    } />
                 ))}
                 <ZoomControl options={{ float: "right" }} />
             </Map>
         </YMaps>
-    );
+    )
+
 }

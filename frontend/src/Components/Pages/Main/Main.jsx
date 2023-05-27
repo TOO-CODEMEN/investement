@@ -74,7 +74,6 @@ export const Main = ({}) => {
                         </label>
                         <Select
                             options={industryOptions}
-                            defaultValue={isLoggedIn() ? industryOptions[0] : ""}
                             onChange={(event) => setCalc((value) => (
                                 {
                                     ...value,
