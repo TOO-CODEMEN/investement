@@ -17,24 +17,36 @@ export const MapForm = (props) => {
     }
 
     return (
-        <YMaps>
-            <Map defaultState={defaultState}>
+        <div>
+            <YMaps>
+                <Map defaultState={defaultState}>
+                    {placemarks.map(el => (
+                        <Placemark geometry={el.coor} onClick={
+                            () => onClickSubmit(el.name)
+                        } options={{
+                            iconColor: "#CC2222",
+                            hasHint: true,
+                            openHintOnHover: true,
+                        }} properties={
+                            {
+                                iconCaption: el.name,
+                            }
+                        } key={el.id}/>
+                    ))}
+                    <ZoomControl options={{ float: "right" }} />
+                </Map>
+            </YMaps>
+
+            <ul style={{display: 'flex', flexDirection: 'column', flexWrap: "wrap"}}>
                 {placemarks.map(el => (
-                    <Placemark geometry={el.coor} onClick={
-                        () => onClickSubmit(el.name)
-                    } options={{
-                        iconColor: "#CC2222",
-                        hasHint: true,
-                        openHintOnHover: true,
-                    }} properties={
-                        {
-                            iconCaption: el.name,
-                        }
-                    } />
+                    <li key={el.id}>
+                        <button onClick={() => onClickSubmit(el.name)} className='okrug'>
+                            {el.name}
+                        </button>
+                    </li>
                 ))}
-                <ZoomControl options={{ float: "right" }} />
-            </Map>
-        </YMaps>
+            </ul>
+        </div>
     )
 
 }

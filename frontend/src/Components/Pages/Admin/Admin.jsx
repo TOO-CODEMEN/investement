@@ -16,7 +16,7 @@ const Admin = ({requestExpenses, expenses, isFetching}) => {
     //         <Loader />
     //     )
     // }
-    
+
     let session = getSession();
 
     return (
