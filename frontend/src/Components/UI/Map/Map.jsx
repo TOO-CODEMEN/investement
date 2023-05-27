@@ -31,16 +31,23 @@ export const MapForm = (props) => {
                             {
                                 iconCaption: el.name,
                             }
-                        } key={el.id}/>
+                        } key={el.id} />
                     ))}
                     <ZoomControl options={{ float: "right" }} />
                 </Map>
             </YMaps>
 
-            <ul style={{display: 'flex', flexDirection: 'column', flexWrap: "wrap"}}>
+            <ul style={{ display: 'flex', flexDirection: 'column', flexWrap: "wrap", marginTop: 10, height: 150 }}>
                 {placemarks.map(el => (
                     <li key={el.id}>
-                        <button onClick={() => onClickSubmit(el.name)} className='okrug'>
+                        <button onClick={() => onClickSubmit(el.name)} style={{
+                            color: '#fff',
+                            borderRadius: '5px',
+                            backgroundColor: '#CC2222',
+                            padding: '5px',
+                            marginBottom: '10px',
+                            cursor: 'pointer'
+                        }}>
                             {el.name}
                         </button>
                     </li>
