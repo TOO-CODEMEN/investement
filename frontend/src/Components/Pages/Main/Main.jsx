@@ -19,7 +19,7 @@ export const Main = ({}) => {
 
     // Состояние объекта формы
     const [calc, setCalc] = useState({
-        yearlyIncome: 0,
+        yearlyIncome: "",
         industry: "",
         headcount: "",
         productionArea: "",
@@ -95,7 +95,7 @@ export const Main = ({}) => {
                         />
                     </div>
 
-                    <div className={cl.input}><Input type="number" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'} /></div>
+                    <div className={cl.input}><Input type="number" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'}/></div>
                     <div className={cl.input}><Input type="number" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
                 </div>
 
