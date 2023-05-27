@@ -11,7 +11,7 @@ const Admin = () => {
                 {
                     session.email !== "admin@admin.ru" ? (
                         <>
-                           <div className="a">Ты кто такой?</div>
+                            <div className="a">Ты кто такой?</div>
                         </>
                     ) :
                         <>

@@ -83,7 +83,7 @@ export const User = ({ userCurrent }) => {
                     </span>
 
                     <div className={cl.list__item__div}>
-                        <a href={`${userCurrent.webSite}`} target='_blank' style= {{textDecoration: 'underline'}}>
+                        <a href={`${userCurrent.webSite}`} style= {{textDecoration: 'underline'}}>
                             {userCurrent.webSite}
                         </a>
                     </div>
