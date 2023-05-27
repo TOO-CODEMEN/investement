@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
 import Input from '../../UI/Input/Input'
 import Select from 'react-select'
 import cl from './Main.module.css'
@@ -18,25 +17,31 @@ export const Main = ({}) => {
 
     // Состояние объекта формы
     const [calc, setCalc] = useState({
+        yearlyIncome: 0,
         industry: "",
-        team: "",
-        landArea: "",
-        objectsArea: "",
-        hardware: "",
-        objectType: "",
-        objectArea: "",
+        headcount: "",
+        productionArea: "",
+        productionSquare: "",
+        plannedAreaOfConstruction: "",
+        equipment: "",
+        typeOfBuilding: "",
+        squareOfBuilding: "",
         patent: false,
-        territory: ""
     })
-
-    //Хук использования навигации
-    const navigate = useNavigate()
 
     // фукнция, которая срабатывает при отправке формы
     const onSubmitHandler = (e) => {
         e.preventDefault()
 
-        if (!calc.industry || !calc.team || !calc.landArea || !calc.objectsArea) {
+        if (!calc.industry || 
+            !calc.headcount || 
+            !calc.productionArea || 
+            !calc.productionSquare || 
+            !calc.equipment ||
+            !calc.plannedAreaOfConstruction ||
+            !calc.squareOfBuilding ||
+            !calc.typeOfBuilding
+            ) {
             alert('Введите все данные!')
             return;
         }
@@ -88,12 +93,12 @@ export const Main = ({}) => {
                         />
                     </div>
 
-                    <div className={cl.input}><Input type="text" label="Штатная численность сотрудников" value={calc.team} setValue={setCalc} object={calc} typeObject={'team'} /></div>
-                    <div className={cl.input}><Input type="text" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.landArea} setValue={setCalc} object={calc} typeObject={'landArea'} /></div>
+                    <div className={cl.input}><Input type="text" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'} /></div>
+                    <div className={cl.input}><Input type="text" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
                 </div>
 
                 <div className={cl.flex__container}>
-                    <div className={cl.input}><Input type="text" label="Планируемая площадь объектов капитального строительства" value={calc.objectsArea} setValue={setCalc} object={calc} typeObject={'objectsArea'} /></div>
+                    <div className={cl.input}><Input type="text" label="Планируемая площадь объектов капитального строительства" value={calc.plannedAreaOfConstruction} setValue={setCalc} object={calc} typeObject={'plannedAreaOfConstruction'} /></div>
                     <div className={cl.input} >
                         <label>
                             Предполагаемое к использованию оборудование
@@ -103,7 +108,7 @@ export const Main = ({}) => {
                             onChange={(event) => setCalc((value) => (
                                 {
                                     ...value,
-                                    ['hardware']: event.value
+                                    ['equipment']: event.value
                                 }))}
                             styles={{
                                 control: (baseStyles, state) => ({
@@ -137,7 +142,7 @@ export const Main = ({}) => {
                             }
                             className={cl.map__button}
                         >
-                            {calc.territory ? calc.territory : "Выбрать"}
+                            {calc.productionArea ? calc.productionArea : "Выбрать"}
                         </a>
 
                     </div>
@@ -153,7 +158,7 @@ export const Main = ({}) => {
                             onChange={(event) => setCalc((value) => (
                                 {
                                     ...value,
-                                    ['objectType']: event.value
+                                    ['typeOfBuilding']: event.value
                                 }))}
                             styles={{
                                 control: (baseStyles, state) => ({
@@ -176,7 +181,7 @@ export const Main = ({}) => {
                             })}
                         />
                     </div>
-                    <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.objectArea} setValue={setCalc} object={calc} typeObject={'objectArea'} /></div>
+                    <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.squareOfBuilding} setValue={setCalc} object={calc} typeObject={'squareOfBuilding'} /></div>
                 </div>
                 <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" checked={calc.patent} setChange={setCalc} typeObject={'patent'} />
 
@@ -198,7 +203,7 @@ export const Main = ({}) => {
                     Выберите расположение
                 </div>
                 <br />
-                <MapForm setValue={setCalc} typeObject={'territory'} setActive={setModalMapActive} />
+                <MapForm setValue={setCalc} typeObject={'productionArea'} setActive={setModalMapActive} />
             </Modal>
         </div>
     )
