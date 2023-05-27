@@ -4,7 +4,6 @@ import Input from '../../UI/Input/Input'
 import Select from 'react-select'
 import cl from './Main.module.css'
 import { Modal } from '../../Modal/Modal'
-import { endSession, getSession, isLoggedIn } from "../../../session";
 import { Loader } from '../../UI/loader'
 import Checkbox from '../../UI/Checkbox/Checkbox'
 import { MapForm } from '../../UI/Map/Map'
@@ -32,16 +31,6 @@ export const Main = ({}) => {
 
     //Хук использования навигации
     const navigate = useNavigate()
-
-    // useEffect(() => {
-    //     let session = getSession();
-    //     console.log("Your access token is: " + session.accessToken);
-    // }, []);
-
-    // const onLogout = () => {
-    //     endSession();
-    //     navigate("/login");
-    // }
 
     // фукнция, которая срабатывает при отправке формы
     const onSubmitHandler = (e) => {
