@@ -95,12 +95,12 @@ export const Main = ({}) => {
                         />
                     </div>
 
-                    <div className={cl.input}><Input type="text" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'} /></div>
-                    <div className={cl.input}><Input type="text" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
+                    <div className={cl.input}><Input type="number" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'} /></div>
+                    <div className={cl.input}><Input type="number" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
                 </div>
 
                 <div className={cl.flex__container}>
-                    <div className={cl.input}><Input type="text" label="Планируемая площадь объектов капитального строительства" value={calc.plannedAreaOfConstruction} setValue={setCalc} object={calc} typeObject={'plannedAreaOfConstruction'} /></div>
+                    <div className={cl.input}><Input type="number" label="Планируемая площадь объектов капитального строительства" value={calc.plannedAreaOfConstruction} setValue={setCalc} object={calc} typeObject={'plannedAreaOfConstruction'} /></div>
                     <div className={cl.input} >
                         <label>
                             Предполагаемое к использованию оборудование
@@ -183,7 +183,7 @@ export const Main = ({}) => {
                             })}
                         />
                     </div>
-                    <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.squareOfBuilding} setValue={setCalc} object={calc} typeObject={'squareOfBuilding'} /></div>
+                    <div className={cl.input}><Input type="number" label="Площадь объекта" value={calc.squareOfBuilding} setValue={setCalc} object={calc} typeObject={'squareOfBuilding'} /></div>
                 </div>
                 <Checkbox id="patent" label="ИП" name="patent" checked={patent} setChange={setPatent} setCalcChange = {setCalc}/>
 
