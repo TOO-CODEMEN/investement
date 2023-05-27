@@ -13,7 +13,7 @@ const Checkbox = (props) => {
                     }))
                 }
             } />
-            <label htmlFor={props.id} >{props.label}</label>
+            <label htmlFor={props.id} >{props.label} (В качестве изначального значения указано "OOO")</label>
         </div>
     )
 }

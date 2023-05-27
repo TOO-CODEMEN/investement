@@ -185,7 +185,7 @@ export const Main = ({}) => {
                     </div>
                     <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.squareOfBuilding} setValue={setCalc} object={calc} typeObject={'squareOfBuilding'} /></div>
                 </div>
-                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" checked={patent} setChange={setPatent} typeObject={'patent'} setCalcChange = {setCalc}/>
+                <Checkbox id="patent" label="ИП" name="patent" checked={patent} setChange={setPatent} setCalcChange = {setCalc}/>
 
                 <button className={cl.form__button}>
                     Рассчитать
