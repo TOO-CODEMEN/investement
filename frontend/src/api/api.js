@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://87.242.126.67'
+    baseURL: 'https://87.242.126.67:8080'
 })
 
 
