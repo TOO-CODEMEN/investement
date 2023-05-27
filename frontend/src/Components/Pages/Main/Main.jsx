@@ -15,6 +15,8 @@ export const Main = ({}) => {
     const [modalActive, setModalActive] = useState(false)
     const [modalMapActive, setModalMapActive] = useState(false)
 
+    const[patent, setPatent] = useState(false)
+
     // Состояние объекта формы
     const [calc, setCalc] = useState({
         yearlyIncome: 0,
@@ -26,7 +28,7 @@ export const Main = ({}) => {
         equipment: "",
         typeOfBuilding: "",
         squareOfBuilding: "",
-        patent: false,
+        typeOfOrganization: "",
     })
 
     // фукнция, которая срабатывает при отправке формы
@@ -183,7 +185,7 @@ export const Main = ({}) => {
                     </div>
                     <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.squareOfBuilding} setValue={setCalc} object={calc} typeObject={'squareOfBuilding'} /></div>
                 </div>
-                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" checked={calc.patent} setChange={setCalc} typeObject={'patent'} />
+                <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" checked={patent} setChange={setPatent} typeObject={'patent'} setCalcChange = {setCalc}/>
 
                 <button className={cl.form__button}>
                     Рассчитать

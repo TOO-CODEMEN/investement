@@ -4,10 +4,15 @@ import cl from './Checkbox.module.css'
 const Checkbox = (props) => {
     return (
         <div>
-            <input type="checkbox" className={cl.checkbox} id={props.id} name={props.name} checked={props.checked} onChange={() => props.setChange((value) => ({
-                ...value, 
-                [props.typeObject]: !props.checked
-            }))} />
+            <input type="checkbox" className={cl.checkbox} id={props.id} name={props.name} checked={props.checked} onChange={
+                () => {
+                    props.setChange(!props.checked)
+                    props.setCalcChange((value) => ({
+                        ...value, 
+                        ['typeOfOrganization']: !props.checked  ? "ИП" : "OOO"
+                    }))
+                }
+            } />
             <label htmlFor={props.id} >{props.label}</label>
         </div>
     )
