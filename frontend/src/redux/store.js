@@ -8,9 +8,11 @@ import {
 } from 'redux';
 
 import { mainReducer } from './main-reducer';
+import { firebaseReducer } from "./firebase-reducer";
 
 const reducers = combineReducers({
-    main: mainReducer
+    main: mainReducer,
+    firebase: firebaseReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

@@ -6,8 +6,8 @@ const instance = axios.create({
 
 export const firebaseApi = {
 
-    async postFirebaseApi(object) {
-        return await instance.post('/users.json', object)
+    postFirebaseApi(object) {
+        return instance.post('/users.json', object)
     },
 
     getFirebaseApi() {

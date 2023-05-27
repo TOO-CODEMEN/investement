@@ -11,7 +11,7 @@ import { MapForm } from '../../UI/Map/Map'
 import { industryOptions, hardwareOptions, objectTypeOptions } from '../../../data/data'
 
 
-const Main = () => {
+export const Main = ({}) => {
 
     // Состояние модальных окон
     const [modalActive, setModalActive] = useState(false)
@@ -74,6 +74,7 @@ const Main = () => {
                         </label>
                         <Select
                             options={industryOptions}
+                            defaultValue={isLoggedIn() ? industryOptions[0] : ""}
                             onChange={(event) => setCalc((value) => (
                                 {
                                     ...value,
@@ -88,7 +89,6 @@ const Main = () => {
                                     fontSize: 15,
                                 }),
                             }}
-
                             theme={(theme) => ({
                                 ...theme,
                                 borderRadius: 0,
@@ -218,5 +218,3 @@ const Main = () => {
         </div>
     )
 }
-
-export default Main
