@@ -52,7 +52,7 @@ public class ExpensesController {
         results.resultCount(expenses);
         results.staffCount(expenses);
         results.realEstateCount(expenses);
-        results.taxesCount();
+        results.taxesCount(expenses);
         results.servicesCount();
         results.sumMedicineCount(expenses);
         results.sumPensionCount(expenses);
