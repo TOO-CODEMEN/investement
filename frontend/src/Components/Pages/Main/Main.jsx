@@ -26,7 +26,6 @@ export const Main = ({}) => {
         hardware: "",
         objectType: "",
         objectArea: "",
-        accounting: false,
         patent: false,
         territory: ""
     })
@@ -190,8 +189,6 @@ export const Main = ({}) => {
                     </div>
                     <div className={cl.input}><Input type="text" label="Площадь объекта" value={calc.objectArea} setValue={setCalc} object={calc} typeObject={'objectArea'} /></div>
                 </div>
-
-                <Checkbox id="accounting" label="Предоставление бухгалтерских услуг" name="accounting" checked={calc.accounting} setChange={setCalc} typeObject={'accounting'} />
                 <Checkbox id="patent" label="Оформление патента (только для ИП)" name="patent" checked={calc.patent} setChange={setCalc} typeObject={'patent'} />
 
                 <button className={cl.form__button}>
