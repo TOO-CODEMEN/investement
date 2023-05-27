@@ -3,10 +3,17 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import cl from './Header.module.css'
 import logo from '../../assets/img/logo.png'
 import { getSession, isLoggedIn, endSession } from "../../session";
+import { Modal } from '../Modal/Modal';
 
-const Header = () => {
+import { connect } from 'react-redux'
+import { requestGetUser } from '../../redux/firebase-reducer'
+import { Loader } from '../UI/loader';
+import { User } from '../User/User';
+
+const Header = ({ requestGetUser, userCurrent, isFetching }) => {
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
+    const [modalActive, setModalActive] = useState(false)
     let session = getSession();
 
     useEffect(() => {
@@ -21,6 +28,14 @@ const Header = () => {
     const onClickHandler = () => {
         if (email === 'admin@admin.ru') {
             navigate('/admin')
+        } else {
+
+            try {
+                requestGetUser(email)
+            } catch (e) {
+                console.log(e)
+            }
+            setModalActive(true)
         }
     }
 
@@ -40,7 +55,7 @@ const Header = () => {
                         ) :
                             <>
                                 <div className={cl.authorization__link} onClick={
-                                    onClickHandler
+                                    () => onClickHandler()
                                 }>{email}</div>
                                 <div className={cl.authorization__link} onClick={
                                     onLogout
@@ -51,8 +66,22 @@ const Header = () => {
 
             </div>
 
+            <Modal active={modalActive} setActive={setModalActive}>
+                {isFetching
+                    ?
+                    <Loader />
+                    :
+                    <User userCurrent={userCurrent}/>
+                }
+            </Modal>
+
         </div>
     )
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+    userCurrent: state.firebase.userCurrent,
+    isFetching: state.firebase.isFetching
+})
+
+export const HeaderContainer = connect(mapStateToProps, { requestGetUser })(Header)

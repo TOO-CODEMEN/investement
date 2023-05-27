@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './Components/Header/Header';
+import { HeaderContainer } from './Components/Header/Header';
 import Login from './Components/Pages/Login/Login';
 import { Main } from './Components/Pages/Main/Main';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
@@ -13,7 +13,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <div className="App">
-          <Header />
+          <HeaderContainer />
           <Routes>
             <Route path="/register" Component={RegisterContainer} />
             <Route path="/login" Component={Login} />
