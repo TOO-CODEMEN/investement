@@ -9,11 +9,11 @@ import java.io.FileNotFoundException;
 
 public class Convertor {
 
-    public void Convertor() throws FileNotFoundException {
+    public void convertor() throws FileNotFoundException {
         Document doc = new Document();
 
 // Каталог изображений
-        File imageDir = new File("C:\\Users\\Администратор\\IdeaProjects\\investement\\src\\main\\resources\\outputImages");
+        File imageDir = new File("src\\main\\resources\\outputImages");
 
         for(File image: imageDir.listFiles()) {
             // Добавить страницу в коллекцию страниц документа
@@ -40,7 +40,7 @@ public class Convertor {
         }
 
 // Сохраните полученный файл PDF
-        doc.save("C:\\Users\\Администратор\\IdeaProjects\\investement\\src\\main\\resources\\results.pdf");
+        doc.save("src\\main\\resources\\results.pdf");
     }
 
 }

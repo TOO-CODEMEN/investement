@@ -2,6 +2,8 @@ package com.too_codemen.application.pdf;
 import com.aspose.pdf.Document;
 import com.aspose.pdf.Image;
 import com.aspose.pdf.Page;
+import com.too_codemen.application.calculations.Results;
+import com.too_codemen.application.model.Expenses;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,46 +16,61 @@ public class AddTextToPdf {
 
 
 
-    public void AddTextToPdf() {
+    public void addTextToPdf(Results results, Expenses expenses) {
         try {
 
             Draw draw = new Draw();
-            BufferedImage image3 = ImageIO.read(new File("C:\\Users\\Администратор\\IdeaProjects\\investement\\src\\main\\resources\\inputImages\\3.jpg")); // загрузка исходного изображения
-            BufferedImage image4 = ImageIO.read(new File("C:\\Users\\Администратор\\IdeaProjects\\investement\\src\\main\\resources\\inputImages\\4.jpg")); // загрузка исходного изображения
+            BufferedImage image3 = ImageIO.read(new File("src\\main\\resources\\inputImages\\3.jpg")); // загрузка исходного изображения
+            BufferedImage image4 = ImageIO.read(new File("src\\main\\resources\\inputImages\\4.jpg")); // загрузка исходного изображения
 
 
+            String industryStr = expenses.getIndustry();
+            String typeOfOrganizationStr = expenses.getTypeOfOrganization();
+            String headCountStr = Integer.toString(expenses.getHeadcount());
+            String productionAreaStr = expenses.getProductionArea();
+
+            String resultStr = Double.toString(results.getResult()) + " млн.руб";
+            String staffStr = Double.toString(results.getStaff()) + " млн.руб";
+            String realEstateStr = Double.toString(results.getRealEstate()) + " млн.руб";
+            String taxesStr = Double.toString(results.getTaxes()) + " млн.руб";
+            String servicesStr = Double.toString(results.getServices()) + " млн.руб";
+            String sumPensionStr = Double.toString(results.getSumPension()) + " млн.руб";
+            String sumMedicineStr = Double.toString(results.getSumMedicine()) + " млн.руб";
+
+                    //Expenses
             //3, отрасль
-            draw.Draw("Пищевая промышленность", 662, 365, image3);
+            draw.Draw(industryStr, 662, 365, image3);
             //3, тип организации
-            draw.Draw("Индивидуальный предприниматель", 662, 505, image3);
+            draw.Draw(typeOfOrganizationStr, 662, 505, image3);
             //3, численность сотрудников
-            draw.Draw("140", 662, 644, image3);
+            draw.Draw(headCountStr, 662, 644, image3);
             //3, регион
-            draw.Draw("ВАО", 662, 769, image3);
+            draw.Draw(productionAreaStr, 662, 769, image3);
+            //Expenses
             //3, общие расходы
-            draw.Draw("1000 млн.руб", 662, 983, image3);
+            draw.Draw(resultStr, 662, 983, image3);
             //3, персонал
-            draw.Draw("300 млн.руб", 662, 1187, image3);
+            draw.Draw(staffStr, 662, 1187, image3);
             //3, аренда недвижимости
-            draw.Draw("300 млн.руб", 662, 1293, image3);
+            draw.Draw(realEstateStr, 662, 1293, image3);
             //3, налоги
-            draw.Draw("300 млн.руб", 662, 1398, image3);
+            draw.Draw(taxesStr, 662, 1398, image3);
             //3, услуги
-            draw.Draw("100 млн.руб", 662, 1496, image3);
+            draw.Draw(servicesStr, 662, 1496, image3);
 
             //расходы на персонал
-            draw.Draw("100 млн.руб", 700, 1025, image4);
+            draw.Draw(staffStr, 700, 1025, image4);
             //количество людей
-            draw.Draw("10000", 700, 1172, image4);
+            draw.Draw(headCountStr, 700, 1172, image4);
             //Пенсионное страхование
-            draw.Draw("20 млн.руб", 700, 1297, image4);
+            draw.Draw(sumPensionStr, 700, 1297, image4);
             //Медицинское страхование
-            draw.Draw("20 млн.руб", 700, 1431, image4);
+            draw.Draw(sumMedicineStr, 700, 1431, image4);
 
 
             // запись результирующего изображения в файл
-            ImageIO.write(image3, "jpg", new File("C:\\Users\\Администратор\\IdeaProjects\\investement\\src\\main\\resources\\outputImages\\output3.png"));
-            ImageIO.write(image4, "jpg", new File("C:\\Users\\Администратор\\IdeaProjects\\investement\\src\\main\\resources\\outputImages\\output4.png"));
+            ImageIO.write(image3, "jpg", new File("src\\main\\resources\\outputImages\\output3.png"));
+            ImageIO.write(image4, "jpg", new File("src\\main\\resources\\outputImages\\output4.png"));
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }

@@ -2,14 +2,22 @@ package com.too_codemen.application.controller;
 
 import com.too_codemen.application.calculations.Results;
 import com.too_codemen.application.model.Expenses;
+import com.too_codemen.application.pdf.AddTextToPdf;
+import com.too_codemen.application.pdf.Convertor;
 import com.too_codemen.application.service.ExpensesServiceImpl;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -18,6 +26,8 @@ public class ExpensesController {
 
     @Autowired
     private  ExpensesServiceImpl expensesService;
+
+    private static final String PDF_FOLDER = "src\\main\\resources\\";
 
     @GetMapping
     public List<Expenses> getAllExpenses() {
@@ -36,10 +46,62 @@ public class ExpensesController {
     }
 
     @PostMapping
-    public ResponseEntity<Expenses> addExpenses(@RequestBody Expenses expenses) {
-        Expenses createdExpenses = expensesService.addExpenses(expenses);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdExpenses);
+    public Results addExpenses(@RequestBody Expenses expenses) throws FileNotFoundException {
+        expensesService.addExpenses(expenses);
+        Results results = new Results();
+        results.resultCount(expenses);
+        results.staffCount(expenses);
+        results.realEstateCount(expenses);
+        results.taxesCount();
+        results.servicesCount();
+        results.sumMedicineCount(expenses);
+        results.sumPensionCount(expenses);
+
+        AddTextToPdf addTextToPdf = new AddTextToPdf();
+        addTextToPdf.addTextToPdf(results, expenses);
+        Convertor convertor = new Convertor();
+        convertor.convertor();
+
+        return results;
     }
+
+    @GetMapping("/download")
+    public ResponseEntity<Resource> downloadPdf() throws IOException {
+        // Получение пути к PDF-файлу
+        String pdfFilePath = PDF_FOLDER + "results.pdf";
+
+        // Создание объекта Resource для представления PDF-файла
+        Resource resource = new FileSystemResource(pdfFilePath);
+
+        if (resource.exists()) {
+            // Проверка существования файла
+
+            // Получение пути к файлу
+            Path pdfPath = Paths.get(pdfFilePath);
+
+            // Получение содержимого файла в виде массива байтов
+            byte[] pdfContent = Files.readAllBytes(pdfPath);
+
+            // Настройка заголовков ответа
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=отчет.pdf");
+
+            // Возвращение ResponseEntity с содержимым PDF, заголовками и статусом ОК (200)
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .contentLength(pdfContent.length)
+                    .body(resource);
+        } else {
+            // Обработка случая, когда PDF-файл не найден
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+
+//    @GetMapping("/printResults")
+//    public Results
 
 //    @PutMapping("/{id}")
 //    public ResponseEntity<Expenses> updateExpensesById(@PathVariable Long id, @RequestBody Expenses expenses) {

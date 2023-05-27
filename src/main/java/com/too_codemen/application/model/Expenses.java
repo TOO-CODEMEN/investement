@@ -13,6 +13,8 @@ public class Expenses {
 
     String industry;
 
+    String typeOfOrganization;
+
     int headcount;
 
     //Location Of Production
@@ -36,6 +38,6 @@ public class Expenses {
 
     int others;
 
-
+    //ToDo: добавить тип организации
 
 }
