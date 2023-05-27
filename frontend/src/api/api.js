@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://87.242.126.67:8080'
+    baseURL: 'http://87.242.126.67:8080'
 })
 
 
@@ -17,4 +17,4 @@ export const mainAPI = {
     getCosts(object) {
         return instance.post(`/api/totalcost`, object)
     }
- }
+}
