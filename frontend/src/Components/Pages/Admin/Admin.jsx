@@ -32,24 +32,26 @@ const Admin = ({ requestExpenses, expenses, isFetching }) => {
                         </>
                     ) :
                         <>
-                            <div className={cl.requests__count}>
-                                Всего запросов: {expenses.length}
+                            <div className='container'>
+                                <div className={cl.requests__count}>
+                                    Всего запросов: {expenses.length}
+                                </div>
+                                <div className={cl.requests}>
+                                    {expenses.length > 0 ? (expenses.map((request, index) =>
+                                        <RequestItem
+                                            request={request}
+                                            key={request.id}
+                                            number={index + 1}
+                                            active={active === request.id}
+                                            multiple={true}
+                                            id={request.id}
+                                            onToggle={(e) => setActive((a) => (a === request.id ? "" : request.id))}
+                                        />
+                                    )) : "История запросов пуста"}
+
+                                </div>
                             </div>
-                            <div className={cl.requests}>
-                            {expenses.length > 0 ? (expenses.map((request, index) =>
-                                    <RequestItem
-                                        request={request}
-                                        key={request.id}
-                                        number={index + 1}
-                                        active={active === request.id}
-                                        multiple={true}
-                                        id={request.id}
-                                        onToggle={(e) => setActive((a) => (a === request.id ? "" : request.id))}
-                                    />
-                                )) : "История запросов пуста"}
-                                
-                            </div>
-                            
+
                         </>
                 }
             </>
