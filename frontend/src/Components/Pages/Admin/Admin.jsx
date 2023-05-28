@@ -1,14 +1,16 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { getSession } from "../../../session";
 import { requestExpenses } from '../../../redux/main-reducer';
 import { connect } from 'react-redux';
 import { Loader } from '../../UI/loader';
 
-const Admin = ({requestExpenses, expenses, isFetching}) => {
+const Admin = ({ requestExpenses, expenses, isFetching }) => {
 
     useEffect(() => {
         requestExpenses()
-    },[])
+    }, [])
+
+    console.log(expenses)
 
     if (isFetching) {
         return (
@@ -28,6 +30,9 @@ const Admin = ({requestExpenses, expenses, isFetching}) => {
                         </>
                     ) :
                         <>
+                            <div>
+                                Всего запросов: {expenses.length}
+                            </div>
                             {expenses.length > 0 ? expenses.map(el => <div>{el.headcount}</div>) : "История запросов пуста"}
                         </>
                 }

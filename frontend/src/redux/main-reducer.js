@@ -14,10 +14,10 @@ const initialState = {
 export const mainReducer = (state = initialState, action) => {
     switch (action.type) {
         case POST_EXPENSES:
-            return { ...state, expenses: action.expenses }
+            return { ...state, costObject: action.costObject }
 
         case SET_EXPENSES:
-            return { ...state, costObject: action.costObject }
+            return { ...state, expenses: action.expenses }
 
         case TOGGLE_IS_FETCHING:
             return { ...state, isFetching: action.isFetching }
