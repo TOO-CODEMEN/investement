@@ -13,7 +13,7 @@ public class Convertor {
         Document doc = new Document();
 
 // Каталог изображений
-        File imageDir = new File("/outputImages");
+        File imageDir = new File("/imagesOutput");
 
         for(File image: imageDir.listFiles()) {
             // Добавить страницу в коллекцию страниц документа
