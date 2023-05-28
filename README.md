@@ -7,9 +7,9 @@
 - Использование с любого устройства
 
 ## Технологический стек
-- __Backend:__ Java, Spring, MySQL, Firebase
-- __Frontend:__ React, Redux, CSS, PrimeReact
-- Docker
+- __Backend:__ Java, Spring, H2, Firebase
+- __Frontend:__ React, Redux, CSS
+- SberCloud
 
 ## Установка и запуск
 Есть два вида запуска проекта, локально и с помощью github pages
