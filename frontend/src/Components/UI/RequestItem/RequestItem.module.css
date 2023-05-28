@@ -17,8 +17,9 @@
 }
 
 .card {
-    background-color: #d9d9d9;
+    border: 2px solid #CC2222;
     margin-bottom: 15px;
+    border-radius: 15px;
 }
 
 .Icons {
@@ -34,7 +35,9 @@
 .cardHeader {
     cursor: pointer;
     padding: 10px 20px;
-    background-color: #c0c0c0;
+    background-color: #CC2222;
     display: flex;
+    color: #fff;
     justify-content: space-between;
+    border-radius: 10px;
 }

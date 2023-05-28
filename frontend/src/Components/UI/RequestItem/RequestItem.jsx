@@ -24,15 +24,15 @@ const AccordionItem = (props) => {
                 </div>
             </div>
             <div className={cl.cardBody}>
-                <p>Отрасль ведения хоз.деятельности: {props.request.industry}</p>
-                <p>Штатная численность сотрудников: {props.request.headcount}</p>
-                <p>Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м): {props.request.productionSquare}</p>
-                <p>Планируемая площадь объектов капитального строительства: {props.request.plannedAreaOfConstruction}</p>
-                <p>Предполагаемое к использованию оборудование: {props.request.equipment}</p>
-                <p>Территория расположения объекта: {props.request.productionArea}</p>
-                <p>Тип объекта: {props.request.typeOfBuilding}</p>
-                <p>Площадь объекта: {props.request.squareOfBuilding}</p>
-                <p>Тип организации: {props.request.typeOfOrganization}</p>
+                <p><b>Отрасль ведения хоз.деятельности:</b> {props.request.industry}</p>
+                <p><b>Штатная численность сотрудников:</b> {props.request.headcount}</p>
+                <p><b>Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м):</b> {props.request.productionSquare}</p>
+                <p><b>Планируемая площадь объектов капитального строительства:</b> {props.request.plannedAreaOfConstruction}</p>
+                <p><b>Предполагаемое к использованию оборудование:</b> {props.request.equipment}</p>
+                <p><b>Территория расположения объекта:</b> {props.request.productionArea}</p>
+                <p><b>Тип объекта:</b> {props.request.typeOfBuilding}</p>
+                <p><b>Площадь объекта:</b> {props.request.squareOfBuilding}</p>
+                <p><b>Тип организации:</b> {props.request.typeOfOrganization}</p>
             </div>
         </div>
     )
