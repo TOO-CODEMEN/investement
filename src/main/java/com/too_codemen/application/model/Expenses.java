@@ -9,7 +9,7 @@ public class Expenses {
 
     Long id;
 
-    int INN; //ИНН
+    int yearlyIncome;
 
     String industry;
 
@@ -34,9 +34,6 @@ public class Expenses {
 
     int accountingServices;
 
-    int patent;
-
-    int others;
 
     //ToDo: добавить тип организации
 

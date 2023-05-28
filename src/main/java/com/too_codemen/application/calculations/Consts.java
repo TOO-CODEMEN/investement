@@ -1,6 +1,8 @@
 package com.too_codemen.application.calculations;
 
 
+import com.too_codemen.application.model.Expenses;
+
 public class Consts {
 
 
@@ -36,7 +38,7 @@ public class Consts {
     public static final double planingSlottingBroachingMachines = 3150656.0695;
     public static final double grindingPolishingFinishingMachines = 4481440.152;
     public static final double gearThreadCuttingMachines = 5258960.304;
-    public static final double сuttingMachines = 562505.4915;
+    public static final double cuttingMachines = 562505.4915;
     public static final double forgingPressingEquipment = 2829654.58;
     public static final double electrophysicalElectrochemicalLaserEquipment = 9930022.921;
 
@@ -44,9 +46,6 @@ public class Consts {
 
     public static final double maxSalary = 85.5960103574483 * 1000;
 
-    //taxes
-    public static final double landTaxTest = productionSquare*region*1.5/100;
-    public static final double propertyTaxTest = squareOfBuilding*region*2.2/100;
 
     //per month
     public static final double AccountingCost = 35000;

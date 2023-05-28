@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class ExpensesRepositoryImpl{
+public class ExpensesRepositoryImpl {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -34,12 +34,12 @@ public class ExpensesRepositoryImpl{
     }
 
     public Expenses addExpenses(Expenses expenses) {
-        String sql1 = "INSERT INTO expenses (INN, industry, headcount, productionArea," +
+        String sql1 = "INSERT INTO expenses (yearlyIncome, industry, typeOfOrganization, headcount, productionArea," +
                 "productionSquare, plannedAreaOfConstruction, equipment, typeOfBuilding," +
-                "squareOfBuilding, accountingServices, patent, others) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql1, expenses.getINN(), expenses.getIndustry(), expenses.getHeadcount(), expenses.getProductionArea(), expenses.getProductionSquare(),
-                expenses.getPlannedAreaOfConstruction(), expenses.getEquipment(), expenses.getTypeOfBuilding(), expenses.getSquareOfBuilding(), expenses.getAccountingServices(),
-                expenses.getPatent(), expenses.getOthers());
+                "squareOfBuilding, accountingServices) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql1, expenses.getYearlyIncome(), expenses.getIndustry(), expenses.getTypeOfOrganization(), expenses.getHeadcount(), expenses.getProductionArea(), expenses.getProductionSquare(),
+                expenses.getPlannedAreaOfConstruction(), expenses.getEquipment(), expenses.getTypeOfBuilding(), expenses.getSquareOfBuilding(), expenses.getAccountingServices()
+        );
         return expenses;
     }
 
@@ -47,8 +47,9 @@ public class ExpensesRepositoryImpl{
     public void createExpensesTable() {
         jdbcTemplate.execute("CREATE TABLE expenses (\n" +
                 "  id INT AUTO_INCREMENT PRIMARY KEY,\n" +
-                "  INN INT,\n" +
+                "  yearlyIncome INT,\n" +
                 "  industry VARCHAR(255),\n" +
+                "  typeOfOrganization VARCHAR(255),\n" +
                 "  headcount INT,\n" +
                 "  productionArea VARCHAR(255),\n" +
                 "  productionSquare INT,\n" +
@@ -56,9 +57,7 @@ public class ExpensesRepositoryImpl{
                 "  equipment VARCHAR(255),\n" +
                 "  typeOfBuilding VARCHAR(255),\n" +
                 "  squareOfBuilding INT,\n" +
-                "  accountingServices INT,\n" +
-                "  patent INT,\n" +
-                "  others INT\n" +
+                "  accountingServices INT\n" +
                 ");\n");
     }
 
@@ -68,8 +67,9 @@ public class ExpensesRepositoryImpl{
         public Expenses mapRow(ResultSet rs, int rowNum) throws SQLException {
             Expenses expenses = new Expenses();
             expenses.setId(rs.getLong("id"));
-            expenses.setINN(rs.getInt("INN"));
+            expenses.setYearlyIncome(rs.getInt("yearlyIncome"));
             expenses.setIndustry(rs.getString("industry"));
+            expenses.setTypeOfOrganization(rs.getString("typeOfOrganization"));
             expenses.setHeadcount(rs.getInt("headcount"));
             expenses.setProductionArea(rs.getString("productionArea"));
             expenses.setProductionSquare(rs.getInt("productionSquare"));
@@ -78,8 +78,6 @@ public class ExpensesRepositoryImpl{
             expenses.setTypeOfBuilding(rs.getString("typeOfBuilding"));
             expenses.setSquareOfBuilding(rs.getInt("squareOfBuilding"));
             expenses.setAccountingServices(rs.getInt("accountingServices"));
-            expenses.setPatent(rs.getInt("patent"));
-            expenses.setOthers(rs.getInt("others"));
             return expenses;
         }
     }

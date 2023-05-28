@@ -50,10 +50,11 @@ public class ExpensesController {
         expensesService.addExpenses(expenses);
         Results results = new Results();
         results.resultCount(expenses);
+       // results.getTypeOfORG(expenses);
         results.staffCount(expenses);
         results.realEstateCount(expenses);
         results.taxesCount(expenses);
-        results.servicesCount();
+        results.servicesCount(expenses);
         results.sumMedicineCount(expenses);
         results.sumPensionCount(expenses);
 
