@@ -33,7 +33,7 @@ const Main = ({ requestPostExpenses, isFetching, costObject }) => {
         equipment: "",
         typeOfBuilding: "",
         squareOfBuilding: "",
-        typeOfOrganization: "OOO",
+        typeOfOrganization: "OOO (AO)",
     })
 
     // фукнция, которая срабатывает при отправке формы

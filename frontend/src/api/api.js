@@ -11,6 +11,6 @@ export const mainAPI = {
     },
 
     postExpenses(object) {
-        return instance.post(`api/expenses`, object)
+        return instance.post(`/api/expenses`, object)
     },
 }

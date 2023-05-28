@@ -9,7 +9,7 @@ const Checkbox = (props) => {
                     props.setChange(!props.checked)
                     props.setCalcChange((value) => ({
                         ...value, 
-                        ['typeOfOrganization']: !props.checked  ? "ИП" : "OOO"
+                        ['typeOfOrganization']: !props.checked  ? "ИП" : "ООО (АО)"
                     }))
                 }
             } />
