@@ -32,7 +32,7 @@ git clone https://github.com/TOO-CODEMEN/investement.git
 7. Проект запущен, смотрите документацию
 
 ## Ссылка на сервис
-[Ссылка](http://87.242.122.110/)
+[Ссылка](http://87.242.122.110:8080/)
 
 ## Документация
 [Документация](https://docs.google.com/document/d/1dbX66GJXOWBxL71oms_dr8B6cIky6ogDmViaUjrqjpo/edit)
