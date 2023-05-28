@@ -9,13 +9,13 @@ import { MapForm } from '../../UI/Map/Map'
 import { industryOptions, hardwareOptions, objectTypeOptions } from '../../../data/data'
 
 
-export const Main = ({}) => {
+export const Main = ({ }) => {
 
     // Состояние модальных окон
     const [modalActive, setModalActive] = useState(false)
     const [modalMapActive, setModalMapActive] = useState(false)
 
-    const[patent, setPatent] = useState(false)
+    const [patent, setPatent] = useState(false)
 
     // Состояние объекта формы
     const [calc, setCalc] = useState({
@@ -35,15 +35,15 @@ export const Main = ({}) => {
     const onSubmitHandler = (e) => {
         e.preventDefault()
 
-        if (!calc.industry || 
-            !calc.headcount || 
-            !calc.productionArea || 
-            !calc.productionSquare || 
+        if (!calc.industry ||
+            !calc.headcount ||
+            !calc.productionArea ||
+            !calc.productionSquare ||
             !calc.equipment ||
             !calc.plannedAreaOfConstruction ||
             !calc.squareOfBuilding ||
             !calc.typeOfBuilding
-            ) {
+        ) {
             alert('Введите все данные!')
             return;
         }
@@ -63,91 +63,97 @@ export const Main = ({}) => {
                 onSubmitHandler
             }>
                 <div className={cl.flex__container}>
-                    <div className={cl.input} >
-                        <label>
-                            Отрасль ведения хоз.деятельности
-                        </label>
-                        <Select
-                            options={industryOptions}
-                            onChange={(event) => setCalc((value) => (
-                                {
-                                    ...value,
-                                    ['industry']: event.value
-                                }))}
-                            styles={{
-                                control: (baseStyles, state) => ({
-                                    ...baseStyles,
-                                    borderRadius: 10,
-                                    border: '2px solid #CCCCCC',
-                                    padding: 2,
-                                    fontSize: 15,
-                                }),
-                            }}
-                            theme={(theme) => ({
-                                ...theme,
-                                borderRadius: 0,
-                                colors: {
-                                    ...theme.colors,
-                                    primary25: '#fff',
-                                    primary: 'red',
-                                },
-                            })}
-                        />
+
+                    <div className={cl.flex__containerRow}>
+                        <div className={cl.input} >
+                            <label>
+                                Отрасль ведения хоз.деятельности
+                            </label>
+                            <Select
+                                options={industryOptions}
+                                onChange={(event) => setCalc((value) => (
+                                    {
+                                        ...value,
+                                        ['industry']: event.value
+                                    }))}
+                                styles={{
+                                    control: (baseStyles, state) => ({
+                                        ...baseStyles,
+                                        borderRadius: 10,
+                                        border: '2px solid #CCCCCC',
+                                        padding: 2,
+                                        fontSize: 15,
+                                    }),
+                                }}
+                                theme={(theme) => ({
+                                    ...theme,
+                                    borderRadius: 0,
+                                    colors: {
+                                        ...theme.colors,
+                                        primary25: '#fff',
+                                        primary: 'red',
+                                    },
+                                })}
+                            />
+                        </div>
+
+                        <div className={cl.input}><Input type="number" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'} /></div>
+
+                        <div className={cl.input}><Input type="number" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
                     </div>
 
-                    <div className={cl.input}><Input type="number" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'}/></div>
-                    <div className={cl.input}><Input type="number" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
-                </div>
+                    <div className={cl.flex__containerRow}>
+                        <div className={cl.input}><Input type="number" label="Планируемая площадь объектов капитального строительства" value={calc.plannedAreaOfConstruction} setValue={setCalc} object={calc} typeObject={'plannedAreaOfConstruction'} /></div>
 
-                <div className={cl.flex__container}>
-                    <div className={cl.input}><Input type="number" label="Планируемая площадь объектов капитального строительства" value={calc.plannedAreaOfConstruction} setValue={setCalc} object={calc} typeObject={'plannedAreaOfConstruction'} /></div>
-                    <div className={cl.input} >
-                        <label>
-                            Предполагаемое к использованию оборудование
-                        </label>
-                        <Select
-                            options={hardwareOptions}
-                            onChange={(event) => setCalc((value) => (
-                                {
-                                    ...value,
-                                    ['equipment']: event.value
-                                }))}
-                            styles={{
-                                control: (baseStyles, state) => ({
-                                    ...baseStyles,
-                                    borderRadius: 10,
-                                    border: '2px solid #CCCCCC',
-                                    padding: 2,
-                                    fontSize: 15,
-                                }),
-                            }}
-                            theme={(theme) => ({
-                                ...theme,
-                                borderRadius: 0,
-                                colors: {
-                                    ...theme.colors,
-                                    primary25: '#fff',
-                                    primary: 'red',
-                                },
-                            })}
-                        />
+                        <div className={cl.input} >
+                            <label>
+                                Предполагаемое к использованию оборудование
+                            </label>
+                            <Select
+                                options={hardwareOptions}
+                                onChange={(event) => setCalc((value) => (
+                                    {
+                                        ...value,
+                                        ['equipment']: event.value
+                                    }))}
+                                styles={{
+                                    control: (baseStyles, state) => ({
+                                        ...baseStyles,
+                                        borderRadius: 10,
+                                        border: '2px solid #CCCCCC',
+                                        padding: 2,
+                                        fontSize: 15,
+                                    }),
+                                }}
+                                theme={(theme) => ({
+                                    ...theme,
+                                    borderRadius: 0,
+                                    colors: {
+                                        ...theme.colors,
+                                        primary25: '#fff',
+                                        primary: 'red',
+                                    },
+                                })}
+                            />
+                        </div>
+
+                        <div className={cl.input}>
+                            <label >
+                                Территория расположения объекта
+                            </label>
+                            <a
+                                href='#'
+                                onClick={
+                                    () => setModalMapActive(true)
+                                }
+                                className={cl.map__button}
+                            >
+                                {calc.productionArea ? calc.productionArea : "Выбрать"}
+                            </a>
+
+                        </div>
                     </div>
 
-                    <div className={cl.input}>
-                        <label >
-                            Территория расположения объекта
-                        </label>
-                        <a
-                            href='#'
-                            onClick={
-                                () => setModalMapActive(true)
-                            }
-                            className={cl.map__button}
-                        >
-                            {calc.productionArea ? calc.productionArea : "Выбрать"}
-                        </a>
-
-                    </div>
                 </div>
 
                 <div className={cl.flex__container}>
@@ -185,7 +191,7 @@ export const Main = ({}) => {
                     </div>
                     <div className={cl.input}><Input type="number" label="Площадь объекта" value={calc.squareOfBuilding} setValue={setCalc} object={calc} typeObject={'squareOfBuilding'} /></div>
                 </div>
-                <Checkbox id="patent" label="ИП" name="patent" checked={patent} setChange={setPatent} setCalcChange = {setCalc}/>
+                <Checkbox id="patent" label="ИП" name="patent" checked={patent} setChange={setPatent} setCalcChange={setCalc} />
 
                 <button className={cl.form__button}>
                     Рассчитать
