@@ -1,0 +1,151 @@
+.head {
+    margin-top: 10px;
+    color: #A6A6A6;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.form {
+    border: 1px solid #CCCCCC;
+    padding: 33px 68px;
+    border-radius: 55px;
+    margin-top: 15px;
+}
+
+.flex__container {
+    margin-bottom: 30px;
+}
+
+.flex__container,
+.flex__containerRow {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.input {
+    display: block;
+    margin-bottom: 20px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.input:not(:last-child) {
+    margin-right: 15px;
+}
+
+.form__button {
+    background-color: #CC2222;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 13px 36.5px;
+    text-transform: uppercase;
+    align-self: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form__button__not__auth {
+    color: grey;
+    font-size: 15px;
+}
+
+.form__button:hover {
+    box-shadow: 0px 0px 15px 5px #CC2222;
+}
+
+.map__button {
+    display: block;
+    border: 2px solid #CCCCCC;
+    border-radius: 10px;
+    background: transparent;
+    width: 100%;
+    padding: 12px;
+    transition: 0.3s;
+}
+
+@media (max-width: 800px) {
+    .input {
+        max-width: 100%;
+    }
+
+    .input:not(:last-child) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .head {
+        font-size: 14px;
+    }
+
+    .form {
+        padding: 0px;
+        border: none;
+    }
+
+    .input {
+        width: 100%;
+    }
+
+    .form__button {
+        font-size: 16px;
+        padding: 13px 20px;
+    }
+}
+
+.result {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.cost {
+    margin-bottom: 20px;
+}
+
+.cost span {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.cost div {
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.result__button {
+    display: block;
+    background-color: #CC2222;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    padding: 13px 60px;
+    text-transform: uppercase;
+    align-self: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.result__register {
+    display: inline-block;
+    padding: 13px 36.5px;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+    align-self: center;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #CC2222;
+    text-transform: uppercase;
+    transition: .3s;
+}
