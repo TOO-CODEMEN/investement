@@ -9,7 +9,14 @@
 - Docker
 
 ## Установка и запуск
-> TODO
+> Запуск проекта локально
+- Для запуска потребуется node.js, [node.js](https://nodejs.org/en)
+- Склонировать репозиторий
+- Зайти в терминал и в корневую папку frontend
+- Написать в терминале npm install
+- Написать в терминале npm start
+- Проект запущен, смотрите документацию
+
 
 ## Документация
 [Документация](https://docs.google.com/document/d/10NFql4wH9PuOzCtY9XhHna48Zdc2Zp4Shg2f0xhlAQ0/edit?usp=sharing)
