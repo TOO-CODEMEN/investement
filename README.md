@@ -36,6 +36,7 @@ git clone https://github.com/TOO-CODEMEN/investement.git
 6. Проект запущен, смотрите документацию
 
 ### Запуск проекта через Github pages:
+[Ссылка](https://too-codemen.github.io/build-investement/)
 
 ## Документация
 [Документация](https://docs.google.com/document/d/1dbX66GJXOWBxL71oms_dr8B6cIky6ogDmViaUjrqjpo/edit)
