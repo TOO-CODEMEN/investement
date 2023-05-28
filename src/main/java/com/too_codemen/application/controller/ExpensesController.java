@@ -22,19 +22,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/expenses")
+//@CrossOrigin(origins = {"http://87.242.126.67:8080", "http://localhost:8080"}, allowCredentials = "true")
 public class ExpensesController {
 
     @Autowired
-    private  ExpensesServiceImpl expensesService;
+    private ExpensesServiceImpl expensesService;
 
     private static final String PDF_FOLDER = "src\\main\\resources\\";
 
+//    @CrossOrigin(origins = "*", allowCredentials = "true")
     @GetMapping
     public List<Expenses> getAllExpenses() {
         return expensesService.getAllExpenses();
     }
 
-
+//    @CrossOrigin(origins = "*", allowCredentials = "true")
     @GetMapping("/{id}")
     public ResponseEntity<Expenses> getExpensesById(@PathVariable Long id) {
         Expenses expenses = expensesService.getExpensesById(id);
@@ -45,7 +47,9 @@ public class ExpensesController {
         }
     }
 
+//    @CrossOrigin(origins = "*", allowCredentials = "true")
     @PostMapping
+    //@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE}, allowedHeaders = {"Content-Type", "Authorization"})
     public Results addExpenses(@RequestBody Expenses expenses) throws FileNotFoundException {
         expensesService.addExpenses(expenses);
         Results results = new Results();
@@ -66,44 +70,42 @@ public class ExpensesController {
         return results;
     }
 
+//    @CrossOrigin(origins = "*", allowCredentials = "true")
     @GetMapping("/download")
     public ResponseEntity<Resource> downloadPdf() throws IOException {
 
-        try{
-            String pdfFilePath = PDF_FOLDER + "results.pdf";
 
-            // Создание объекта Resource для представления PDF-файла
-            Resource resource = new FileSystemResource(pdfFilePath);
+        String pdfFilePath = PDF_FOLDER + "results.pdf";
 
-            if (resource.exists()) {
-                // Проверка существования файла
+        // Создание объекта Resource для представления PDF-файла
+        Resource resource = new FileSystemResource(pdfFilePath);
 
-                // Получение пути к файлу
-                Path pdfPath = Paths.get(pdfFilePath);
+        if (resource.exists()) {
+            // Проверка существования файла
 
-                // Получение содержимого файла в виде массива байтов
-                byte[] pdfContent = Files.readAllBytes(pdfPath);
+            // Получение пути к файлу
+            Path pdfPath = Paths.get(pdfFilePath);
 
-                // Настройка заголовков ответа
-                HttpHeaders headers = new HttpHeaders();
-                headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=отчет.pdf");
+            // Получение содержимого файла в виде массива байтов
+            byte[] pdfContent = Files.readAllBytes(pdfPath);
 
-                // Возвращение ResponseEntity с содержимым PDF, заголовками и статусом ОК (200)
-                return ResponseEntity.ok()
-                        .headers(headers)
-                        .contentType(MediaType.APPLICATION_PDF)
-                        .contentLength(pdfContent.length)
-                        .body(resource);
-            } else {
-                // Обработка случая, когда PDF-файл не найден
-                return ResponseEntity.notFound().build();
-            }
-        } finally {
+            // Настройка заголовков ответа
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=отчет.pdf");
 
+            // Возвращение ResponseEntity с содержимым PDF, заголовками и статусом ОК (200)
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .contentLength(pdfContent.length)
+                    .body(resource);
+        } else {
+            // Обработка случая, когда PDF-файл не найден
+            return ResponseEntity.notFound().build();
         }
 
-    }
 
+    }
 
 
 //    @GetMapping("/printResults")
