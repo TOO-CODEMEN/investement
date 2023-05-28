@@ -13,8 +13,4 @@ export const mainAPI = {
     postExpenses(object) {
         return instance.post(`api/expenses`, object)
     },
-
-    getDownload() {
-        return instance.get(`/expenses/download`)
-    }
 }

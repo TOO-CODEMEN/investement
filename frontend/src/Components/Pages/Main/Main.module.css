@@ -34,7 +34,7 @@
 
 .input:not(:last-child) {
     margin-right: 15px;
-}   
+}
 
 .form__button {
     background-color: #CC2222;
@@ -48,6 +48,11 @@
     align-self: center;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.form__button__not__auth {
+    color: grey;
+    font-size: 15px;
 }
 
 .form__button:hover {
@@ -68,19 +73,20 @@
     .input {
         max-width: 100%;
     }
+
     .input:not(:last-child) {
         margin-right: 0;
-    }  
+    }
 }
 
 @media (max-width: 500px) {
-    
+
     .head {
         font-size: 14px;
     }
 
     .form {
-        padding: 0px ;
+        padding: 0px;
         border: none;
     }
 
@@ -88,8 +94,58 @@
         width: 100%;
     }
 
-    .form__button  {
+    .form__button {
         font-size: 16px;
         padding: 13px 20px;
     }
+}
+
+.result {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.cost {
+    margin-bottom: 20px;
+}
+
+.cost span {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.cost div {
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.result__button {
+    display: block;
+    background-color: #CC2222;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    padding: 13px 60px;
+    text-transform: uppercase;
+    align-self: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.result__register {
+    display: inline-block;
+    padding: 13px 36.5px;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+    align-self: center;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #CC2222;
+    text-transform: uppercase;
+    transition: .3s;
 }
