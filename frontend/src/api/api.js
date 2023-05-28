@@ -7,11 +7,7 @@ const instance = axios.create({
 
 export const mainAPI = {
     getExpenses() {
-        return instance.get(`/api/expenses`, {
-            headers: {
-                'Access-Control-Allow-Origin': '*'
-            }
-        })
+        return instance.get(`/api/expenses`)
     },
 
     postExpenses(object) {
