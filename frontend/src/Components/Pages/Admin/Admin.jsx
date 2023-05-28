@@ -6,16 +6,15 @@ import { Loader } from '../../UI/loader';
 
 const Admin = ({requestExpenses, expenses, isFetching}) => {
 
+    useEffect(() => {
+        requestExpenses()
+    },[])
 
-    // useEffect(() => {
-    //     requestExpenses()
-    // },[])
-
-    // if (isFetching) {
-    //     return (
-    //         <Loader />
-    //     )
-    // }
+    if (isFetching) {
+        return (
+            <Loader />
+        )
+    }
 
     let session = getSession();
 
@@ -29,7 +28,7 @@ const Admin = ({requestExpenses, expenses, isFetching}) => {
                         </>
                     ) :
                         <>
-                            <div className="b">admin</div>
+                            {expenses.length > 0 ? expenses.map(el => <div>{el.headcount}</div>) : "История запросов пуста"}
                         </>
                 }
             </>
