@@ -19,7 +19,7 @@
 ```shell 
 git clone https://github.com/TOO-CODEMEN/investement.git
 ```
-3. Зайти в терминал и в корневую папку frontend
+3. Зайти в склонированную папку через терминал и в корневую папку frontend
 4. Написать в терминале npm install
 ```shell
  npm install
