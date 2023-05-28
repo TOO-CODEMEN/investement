@@ -42,7 +42,8 @@ export const Main = ({ }) => {
             !calc.equipment ||
             !calc.plannedAreaOfConstruction ||
             !calc.squareOfBuilding ||
-            !calc.typeOfBuilding
+            !calc.typeOfBuilding ||
+            !calc.yearlyIncome
         ) {
             alert('Введите все данные!')
             return;
@@ -112,7 +113,9 @@ export const Main = ({ }) => {
 
                         <div className={cl.input}><Input type="number" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'} /></div>
 
-                        <div className={cl.input}><Input type="number" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м) " value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
+                        <div className={cl.input}><Input type="number" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м)" value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
+                        
+                        <div className={cl.input}><Input type="number" label="Годовой доход" value={calc.yearlyIncome} setValue={setCalc} object={calc} typeObject={'yearlyIncome'} /></div>
                     </div>
 
                     <div className={cl.flex__containerRow}>
