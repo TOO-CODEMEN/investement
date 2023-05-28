@@ -7,14 +7,14 @@ const instance = axios.create({
 
 export const mainAPI = {
     getExpenses() {
-        return instance.get(`/api/expenses`)
+        return instance.get(`/expenses`)
     },
 
     postExpenses(object) {
-        return instance.post(`/api/expenses`, object)
+        return instance.post(`/expenses`, object)
     },
 
-    getCosts(object) {
-        return instance.post(`/api/totalcost`, object)
+    getDownload() {
+        return instance.get(`/expenses/download`)
     }
 }
