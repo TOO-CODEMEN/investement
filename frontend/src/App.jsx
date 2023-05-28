@@ -1,10 +1,10 @@
 import './App.css';
 import { HeaderContainer } from './Components/Header/Header';
 import Login from './Components/Pages/Login/Login';
-import { Main, MainContainer } from './Components/Pages/Main/Main';
+import { MainContainer } from './Components/Pages/Main/Main';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { RegisterContainer } from './Components/Pages/Registration/Register';
-import Admin, { AdminContainer } from './Components/Pages/Admin/Admin';
+import { AdminContainer } from './Components/Pages/Admin/Admin';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 

@@ -8,16 +8,22 @@ import Checkbox from '../../UI/Checkbox/Checkbox'
 import { MapForm } from '../../UI/Map/Map'
 import { industryOptions, hardwareOptions, objectTypeOptions } from '../../../data/data'
 import { requestPostExpenses } from '../../../redux/main-reducer'
-import {connect} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { isLoggedIn } from '../../../session'
+import { NavLink } from 'react-router-dom'
 
 
-const Main = ({requestPostExpenses, isFetching, costObject}) => {
+const Main = ({ requestPostExpenses, isFetching, costObject }) => {
 
     // Состояние модальных окон
     const [modalActive, setModalActive] = useState(false)
     const [modalMapActive, setModalMapActive] = useState(false)
 
     const [patent, setPatent] = useState(false)
+
+    const navigation = useNavigate()
 
     // Состояние объекта формы
     const [calc, setCalc] = useState({
@@ -56,7 +62,7 @@ const Main = ({requestPostExpenses, isFetching, costObject}) => {
             industry: calc.industry,
             headcount: Number(calc.headcount),
             productionArea: calc.productionArea,
-            productionSquare:  Number(calc.productionSquare),
+            productionSquare: Number(calc.productionSquare),
             plannedAreaOfConstruction: Number(calc.plannedAreaOfConstruction),
             equipment: calc.equipment,
             typeOfBuilding: calc.typeOfBuilding,
@@ -114,7 +120,7 @@ const Main = ({requestPostExpenses, isFetching, costObject}) => {
                         <div className={cl.input}><Input type="number" label="Штатная численность сотрудников" value={calc.headcount} setValue={setCalc} object={calc} typeObject={'headcount'} /></div>
 
                         <div className={cl.input}><Input type="number" label="Предполагаемая площадь земельного участка для расположения промышленного производства (в кв. м)" value={calc.productionSquare} setValue={setCalc} object={calc} typeObject={'productionSquare'} /></div>
-                        
+
                         <div className={cl.input}><Input type="number" label="Годовой доход" value={calc.yearlyIncome} setValue={setCalc} object={calc} typeObject={'yearlyIncome'} /></div>
                     </div>
 
@@ -215,14 +221,47 @@ const Main = ({requestPostExpenses, isFetching, costObject}) => {
             </form >
 
             <Modal active={modalActive} setActive={setModalActive}>
-                <div>
-                    Подсчет данных
-                </div>
-                <br />
-                {isFetching ? <Loader /> : <div>
-                    {costObject.result}
-                </div> }
-            </Modal>
+
+                {isFetching ?
+                    <div>
+                        <div className={cl.result}>
+                            Подсчет данных
+                        </div>
+                        <Loader />
+                    </div> :
+                    <div>
+                        <h3 className={cl.result}>
+                            Результат
+                        </h3>
+
+                        <div className={cl.cost}>
+                            <span>
+                                Ваша расчетная стоимость:
+                            </span>
+                            <div>
+                                {costObject.result} млн рублей
+                            </div>
+                        </div>
+
+                        {isLoggedIn() ?
+
+                            <div>
+                                <a href='http://87.242.126.67:8080/api/expenses/download' className={cl.result__button} target='_blank'>
+                                    Скачать отчет
+                                </a>
+                            </div>
+                            :
+                            <div>
+                                <div>
+                                    Для того чтобы скачать отчет, авторизуйтесь
+                                </div>
+                                <NavLink to="/login" className={cl.result__register}>Авторизация</NavLink>
+                            </div>
+                        }
+                    </div>
+
+                }
+            </Modal >
 
             <Modal active={modalMapActive} setActive={setModalMapActive}>
                 <div>
@@ -231,7 +270,7 @@ const Main = ({requestPostExpenses, isFetching, costObject}) => {
                 <br />
                 <MapForm setValue={setCalc} typeObject={'productionArea'} setActive={setModalMapActive} />
             </Modal>
-        </div>
+        </div >
     )
 }
 
