@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 
-
 import static com.too_codemen.application.calculations.Consts.*;
 
 @Data
@@ -121,7 +120,7 @@ public class Results {
     }
 
     public double getTypeOfORG(Expenses expenses) {
-        System.out.println(expenses.getTypeOfOrganization());
+
         switch (expenses.getTypeOfOrganization()) {
             case "ИП":
                 typeORG = soloProprietorRegistration;
@@ -137,22 +136,34 @@ public class Results {
     }
 
 
+//    public double resultCountWithoutIncome(Expenses expenses) {
+//        System.out.println(expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
+//                * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
+//                + getTypeOfORG(expenses) + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses) - 1);
+//
+//        setResult(Precision.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
+//                * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
+//                + getTypeOfORG(expenses) + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses)), 3));
+//        return result;
+//    }
+
     public double resultCountWithoutIncome(Expenses expenses) {
+
+
         setResult(Precision.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
                 * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
                 + soloProprietorRegistration + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses)) / 1000000, 3));
         return result;
     }
 
+
     public double resultCount(Expenses expenses) {
-        setResult(Precision.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
-                * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
-                + soloProprietorRegistration + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses) + incomeTaxCount(expenses)) / 1000000,3));
+        setResult(Precision.round((resultCountWithoutIncome(expenses) * 1000000 + incomeTaxCount(expenses)), 3));
         return result;
     }
 
     public double staffCount(Expenses expenses) {
-        setStaff(Precision.round((expenses.getHeadcount() * maxSalary + sumMedicineCount(expenses) + sumPensionCount(expenses)) / 1000000, 3));
+        setStaff(Precision.round(expenses.getHeadcount() * maxSalary / 1000000 + sumMedicineCount(expenses) + sumPensionCount(expenses), 3));
         return staff;
     }
 
@@ -162,8 +173,7 @@ public class Results {
     }
 
     public double taxesCount(Expenses expenses) {
-
-        setTaxes(Precision.round((landTaxCount(expenses) + propertyTaxCount(expenses)), 3));
+        setTaxes(Precision.round((landTaxCount(expenses) + propertyTaxCount(expenses) + incomeTaxCount(expenses)) / 1000000, 3));
         return taxes;
     }
 
@@ -184,19 +194,17 @@ public class Results {
     }
 
     public double landTaxCount(Expenses expenses) {
-        System.out.println(expenses.getProductionSquare() * getRegion(expenses) * 1.5 / 100);
         setLandTax(expenses.getProductionSquare() * getRegion(expenses) * 1.5 / 100);
         return landTax;
     }
 
     public double propertyTaxCount(Expenses expenses) {
-        System.out.println(expenses.getSquareOfBuilding() * getRegion(expenses) * 2.2 / 100);
         setPropertyTax(expenses.getSquareOfBuilding() * getRegion(expenses) * 2.2 / 100);
         return propertyTax;
     }
 
     public double incomeTaxCount(Expenses expenses) {
-        setIncomeTax((expenses.getYearlyIncome() - resultCountWithoutIncome(expenses)) * 20 / 100);
+        setIncomeTax((expenses.getYearlyIncome() - resultCountWithoutIncome(expenses) * 1000000) * 20 / 100);
         return incomeTax;
     }
 
