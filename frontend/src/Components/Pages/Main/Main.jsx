@@ -7,9 +7,11 @@ import { Loader } from '../../UI/loader'
 import Checkbox from '../../UI/Checkbox/Checkbox'
 import { MapForm } from '../../UI/Map/Map'
 import { industryOptions, hardwareOptions, objectTypeOptions } from '../../../data/data'
+import { requestPostExpenses } from '../../../redux/main-reducer'
+import {connect} from 'react-redux'
 
 
-export const Main = ({ }) => {
+const Main = ({requestPostExpenses, isFetching, costObject}) => {
 
     // Состояние модальных окон
     const [modalActive, setModalActive] = useState(false)
@@ -28,7 +30,7 @@ export const Main = ({ }) => {
         equipment: "",
         typeOfBuilding: "",
         squareOfBuilding: "",
-        typeOfOrganization: "",
+        typeOfOrganization: "OOO",
     })
 
     // фукнция, которая срабатывает при отправке формы
@@ -61,9 +63,7 @@ export const Main = ({ }) => {
             squareOfBuilding: Number(calc.squareOfBuilding),
             typeOfOrganization: calc.typeOfOrganization,
         }
-
-        console.log(newCalc)
-
+        requestPostExpenses(newCalc)
         setModalActive(true)
     }
 
@@ -219,7 +219,9 @@ export const Main = ({ }) => {
                     Подсчет данных
                 </div>
                 <br />
-                <Loader />
+                {isFetching ? <Loader /> : <div>
+                    {costObject.result}
+                </div> }
             </Modal>
 
             <Modal active={modalMapActive} setActive={setModalMapActive}>
@@ -232,3 +234,10 @@ export const Main = ({ }) => {
         </div>
     )
 }
+
+const mapStateToProps = (state) => ({
+    costObject: state.main.costObject,
+    isFetching: state.main.isFetching
+})
+
+export const MainContainer = connect(mapStateToProps, { requestPostExpenses })(Main)
