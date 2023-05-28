@@ -30,7 +30,7 @@ git clone https://github.com/TOO-CODEMEN/investement.git
 ```
 6. Проект запущен, смотрите документацию
 
-## Ссылка:
+## Ссылка
 [Ссылка]()
 
 ## Документация
