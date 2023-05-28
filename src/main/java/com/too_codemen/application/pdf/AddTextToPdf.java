@@ -20,8 +20,8 @@ public class AddTextToPdf {
         try {
 
             Draw draw = new Draw();
-            BufferedImage image3 = ImageIO.read(new File("src\\main\\resources\\inputImages\\3.jpg")); // загрузка исходного изображения
-            BufferedImage image4 = ImageIO.read(new File("src\\main\\resources\\inputImages\\4.jpg")); // загрузка исходного изображения
+            BufferedImage image3 = ImageIO.read(new File("/imagesInput/3.jpg")); // загрузка исходного изображения
+            BufferedImage image4 = ImageIO.read(new File("/imagesInput/4.jpg")); // загрузка исходного изображения
 
 
             String industryStr = expenses.getIndustry();
@@ -69,8 +69,8 @@ public class AddTextToPdf {
 
 
             // запись результирующего изображения в файл
-            ImageIO.write(image3, "jpg", new File("src\\main\\resources\\outputImages\\output3.png"));
-            ImageIO.write(image4, "jpg", new File("src\\main\\resources\\outputImages\\output4.png"));
+            ImageIO.write(image3, "jpg", new File("/imagesOut/output3.png"));
+            ImageIO.write(image4, "jpg", new File("/imagesOut/output4.png"));
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }

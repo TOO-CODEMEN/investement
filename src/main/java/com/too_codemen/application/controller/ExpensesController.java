@@ -28,7 +28,7 @@ public class ExpensesController {
     @Autowired
     private ExpensesServiceImpl expensesService;
 
-    private static final String PDF_FOLDER = "src\\main\\resources\\";
+    private static final String PDF_FOLDER = "/";
 
 //    @CrossOrigin(origins = "*", allowCredentials = "true")
     @GetMapping
