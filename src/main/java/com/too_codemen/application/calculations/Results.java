@@ -4,8 +4,11 @@ import com.too_codemen.application.model.Expenses;
 import com.too_codemen.application.calculations.Consts;
 import lombok.Data;
 import lombok.Setter;
+import org.apache.commons.math3.util.Precision;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+
+
 
 import static com.too_codemen.application.calculations.Consts.*;
 
@@ -85,31 +88,31 @@ public class Results {
 
     public double getEquipment(Expenses expenses) {
         switch (expenses.getEquipment()) {
-            case "ВАО":
+            case "Токарные станки":
                 equipment = lathes;
                 break;
-            case "ЗАО":
+            case "Сверлильные и расточные станки":
                 equipment = drillingBoringMachines;
                 break;
-            case "ЗелАО":
+            case "Фрезерные станки":
                 equipment = millingMachines;
                 break;
-            case "НАО":
+            case "Строгальные, долбёжные и протяжные станки":
                 equipment = planingSlottingBroachingMachines;
                 break;
-            case "САО":
+            case "Шлифовальные, полировальные, доводочные станки":
                 equipment = grindingPolishingFinishingMachines;
                 break;
-            case "СВАО":
+            case "Зубообрабатывающие и резьбонарезные станки":
                 equipment = gearThreadCuttingMachines;
                 break;
-            case "СЗАО":
+            case "Разрезные станки":
                 equipment = cuttingMachines;
                 break;
-            case "ТАО":
+            case "Кузнечно-прессовое оборудование":
                 equipment = forgingPressingEquipment;
                 break;
-            case "ЦАО":
+            case "Электрофизическое, электрохимическое, лазерное оборудование":
                 equipment = electrophysicalElectrochemicalLaserEquipment;
                 break;
         }
@@ -135,63 +138,65 @@ public class Results {
 
 
     public double resultCountWithoutIncome(Expenses expenses) {
-        setResult(Math.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
+        setResult(Precision.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
                 * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
-                + soloProprietorRegistration + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses)) / 1000000));
+                + soloProprietorRegistration + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses)) / 1000000, 3));
         return result;
     }
 
     public double resultCount(Expenses expenses) {
-        setResult(Math.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
+        setResult(Precision.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
                 * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
-                + soloProprietorRegistration + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses)) / 1000000));
+                + soloProprietorRegistration + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses) + incomeTaxCount(expenses)) / 1000000,3));
         return result;
     }
 
     public double staffCount(Expenses expenses) {
-        setStaff(Math.round((expenses.getHeadcount() * maxSalary + sumMedicineCount(expenses) + sumPensionCount(expenses)) / 1000000));
+        setStaff(Precision.round((expenses.getHeadcount() * maxSalary + sumMedicineCount(expenses) + sumPensionCount(expenses)) / 1000000, 3));
         return staff;
     }
 
     public double realEstateCount(Expenses expenses) {
-        setRealEstate(Math.round((capitalConstructionCost * expenses.getPlannedAreaOfConstruction()) / 1000000));
+        setRealEstate((capitalConstructionCost * expenses.getPlannedAreaOfConstruction()) / 1000000);
         return realEstate;
     }
 
     public double taxesCount(Expenses expenses) {
 
-        setTaxes(Math.round((landTaxCount(expenses) + propertyTaxCount(expenses)) / 1000000));
+        setTaxes(Precision.round((landTaxCount(expenses) + propertyTaxCount(expenses)), 3));
         return taxes;
     }
 
     public double servicesCount(Expenses expenses) {
-        setServices(Math.round((AccountingCost ) / 1000000));
+        setServices(Precision.round((AccountingCost + getTypeOfORG(expenses)) / 1000000, 3));
         return services;
     }
 
     public double sumMedicineCount(Expenses expenses) {
-        setSumMedicine(Math.round((expenses.getHeadcount() * medicine) / 1000000));
+
+        setSumMedicine(Precision.round((expenses.getHeadcount() * medicine) / 1000000, 3));
         return sumMedicine;
     }
 
     public double sumPensionCount(Expenses expenses) {
-        setSumPension(Math.round((expenses.getHeadcount() * pension) / 1000000));
+        setSumPension(Precision.round((expenses.getHeadcount() * pension) / 1000000, 3));
         return sumPension;
     }
 
     public double landTaxCount(Expenses expenses) {
-
-        setLandTax(Math.round(expenses.getProductionSquare() * getRegion(expenses) * 1.5 / 100) / 1000000);
+        System.out.println(expenses.getProductionSquare() * getRegion(expenses) * 1.5 / 100);
+        setLandTax(expenses.getProductionSquare() * getRegion(expenses) * 1.5 / 100);
         return landTax;
     }
 
     public double propertyTaxCount(Expenses expenses) {
-        setLandTax(Math.round(expenses.getSquareOfBuilding() * getRegion(expenses) * 2.2 / 100) / 1000000);
+        System.out.println(expenses.getSquareOfBuilding() * getRegion(expenses) * 2.2 / 100);
+        setPropertyTax(expenses.getSquareOfBuilding() * getRegion(expenses) * 2.2 / 100);
         return propertyTax;
     }
 
     public double incomeTaxCount(Expenses expenses) {
-        setIncomeTax(Math.round((expenses.getYearlyIncome() - resultCount(expenses)) * 20 / 100));
+        setIncomeTax((expenses.getYearlyIncome() - resultCountWithoutIncome(expenses)) * 20 / 100);
         return incomeTax;
     }
 

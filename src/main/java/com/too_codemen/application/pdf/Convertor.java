@@ -12,6 +12,7 @@ public class Convertor {
     public void convertor() throws FileNotFoundException {
         Document doc = new Document();
 
+
 // Каталог изображений
         File imageDir = new File("/imagesOutput");
 
