@@ -18,7 +18,7 @@ public class Convertor {
 
         Thread.sleep(1000);
 // Каталог изображений
-        File imageDir = new File("C:\\Users\\Администратор\\IdeaProjects\\investement\\src\\main\\resources\\outputImages");
+        File imageDir = new File("/imagesOutput");
 
         // Получить список файлов
         File[] files = imageDir.listFiles();
@@ -59,7 +59,7 @@ public class Convertor {
         }
 
 // Сохраните полученный файл PDF
-        doc.save("C:\\Users\\Администратор\\IdeaProjects\\investement\\src\\main\\resources\\results.pdf");
+        doc.save("/results.pdf");
     }
 
 }
