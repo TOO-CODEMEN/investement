@@ -136,16 +136,26 @@ public class Results {
     }
 
 
+//    public double resultCountWithoutIncome(Expenses expenses) {
+//        System.out.println(expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
+//                * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
+//                + getTypeOfORG(expenses) + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses) - 1);
+//
+//        setResult(Precision.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
+//                * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
+//                + getTypeOfORG(expenses) + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses)), 3));
+//        return result;
+//    }
+
     public double resultCountWithoutIncome(Expenses expenses) {
-        System.out.println(expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
-                * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
-                + getTypeOfORG(expenses) + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses) - 1);
+
 
         setResult(Precision.round((expenses.getHeadcount() * maxSalary + expenses.getHeadcount()
                 * maxSalary * 0.3 + propertyTaxCount(expenses) + landTaxCount(expenses) + AccountingCost
-                + getTypeOfORG(expenses) + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses)), 3));
+                + soloProprietorRegistration + capitalConstructionCost * expenses.getPlannedAreaOfConstruction() + getEquipment(expenses)) / 1000000, 3));
         return result;
     }
+
 
     public double resultCount(Expenses expenses) {
         setResult(Precision.round((resultCountWithoutIncome(expenses) * 1000000 + incomeTaxCount(expenses)), 3));
@@ -194,7 +204,7 @@ public class Results {
     }
 
     public double incomeTaxCount(Expenses expenses) {
-        setIncomeTax((expenses.getYearlyIncome() - resultCountWithoutIncome(expenses)) * 20 / 100);
+        setIncomeTax((expenses.getYearlyIncome() - resultCountWithoutIncome(expenses) * 1000000) * 20 / 100);
         return incomeTax;
     }
 
