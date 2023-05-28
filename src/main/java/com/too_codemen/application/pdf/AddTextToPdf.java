@@ -69,8 +69,8 @@ public class AddTextToPdf {
 
 
             // запись результирующего изображения в файл
-            ImageIO.write(image3, "jpg", new File("/imagesOutput/output3.png"));
-            ImageIO.write(image4, "jpg", new File("/imagesOutput/output4.png"));
+            ImageIO.write(image3, "jpg", new File("/imagesOutput/output3.jpg"));
+            ImageIO.write(image4, "jpg", new File("/imagesOutput/output4.jpg"));
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
