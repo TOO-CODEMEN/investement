@@ -10,21 +10,21 @@
 
 ## Установка и запуск
 > Запуск проекта локально
-- Для запуска потребуется node.js, [Ссылка на скачивание](https://nodejs.org/en)
-- Склонировать репозиторий [Ссылка на репозиторий](https://github.com/TOO-CODEMEN/investement)
+1. Для запуска потребуется node.js, [Ссылка на скачивание](https://nodejs.org/en)
+2. Склонировать репозиторий [Ссылка на репозиторий](https://github.com/TOO-CODEMEN/investement)
 ```shell 
 git clone https://github.com/TOO-CODEMEN/investement.git
 ```
-- Зайти в терминал и в корневую папку frontend
-- Написать в терминале npm install
+3. Зайти в терминал и в корневую папку frontend
+4. Написать в терминале npm install
 ```shell
  npm install
 ```
-- Написать в терминале npm start
+5. Написать в терминале npm start
 ```shell
  npm start
 ```
-- Проект запущен, смотрите документацию
+6. Проект запущен, смотрите документацию
 
 
 ## Документация
