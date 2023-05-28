@@ -48,7 +48,20 @@ export const Main = ({ }) => {
             return;
         }
 
-        console.log(calc)
+        let newCalc = {
+            yearlyIncome: Number(calc.yearlyIncome),
+            industry: calc.industry,
+            headcount: Number(calc.headcount),
+            productionArea: calc.productionArea,
+            productionSquare:  Number(calc.productionSquare),
+            plannedAreaOfConstruction: Number(calc.plannedAreaOfConstruction),
+            equipment: calc.equipment,
+            typeOfBuilding: calc.typeOfBuilding,
+            squareOfBuilding: Number(calc.squareOfBuilding),
+            typeOfOrganization: calc.typeOfOrganization,
+        }
+
+        console.log(newCalc)
 
         setModalActive(true)
     }
