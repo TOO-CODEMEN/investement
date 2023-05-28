@@ -50,7 +50,7 @@ public class ExpensesController {
         expensesService.addExpenses(expenses);
         Results results = new Results();
         results.resultCount(expenses);
-       // results.getTypeOfORG(expenses);
+        results.getTypeOfORG(expenses);
         results.staffCount(expenses);
         results.realEstateCount(expenses);
         results.taxesCount(expenses);
@@ -68,35 +68,40 @@ public class ExpensesController {
 
     @GetMapping("/download")
     public ResponseEntity<Resource> downloadPdf() throws IOException {
-        // Получение пути к PDF-файлу
-        String pdfFilePath = PDF_FOLDER + "results.pdf";
 
-        // Создание объекта Resource для представления PDF-файла
-        Resource resource = new FileSystemResource(pdfFilePath);
+        try{
+            String pdfFilePath = PDF_FOLDER + "results.pdf";
 
-        if (resource.exists()) {
-            // Проверка существования файла
+            // Создание объекта Resource для представления PDF-файла
+            Resource resource = new FileSystemResource(pdfFilePath);
 
-            // Получение пути к файлу
-            Path pdfPath = Paths.get(pdfFilePath);
+            if (resource.exists()) {
+                // Проверка существования файла
 
-            // Получение содержимого файла в виде массива байтов
-            byte[] pdfContent = Files.readAllBytes(pdfPath);
+                // Получение пути к файлу
+                Path pdfPath = Paths.get(pdfFilePath);
 
-            // Настройка заголовков ответа
-            HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=отчет.pdf");
+                // Получение содержимого файла в виде массива байтов
+                byte[] pdfContent = Files.readAllBytes(pdfPath);
 
-            // Возвращение ResponseEntity с содержимым PDF, заголовками и статусом ОК (200)
-            return ResponseEntity.ok()
-                    .headers(headers)
-                    .contentType(MediaType.APPLICATION_PDF)
-                    .contentLength(pdfContent.length)
-                    .body(resource);
-        } else {
-            // Обработка случая, когда PDF-файл не найден
-            return ResponseEntity.notFound().build();
+                // Настройка заголовков ответа
+                HttpHeaders headers = new HttpHeaders();
+                headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=отчет.pdf");
+
+                // Возвращение ResponseEntity с содержимым PDF, заголовками и статусом ОК (200)
+                return ResponseEntity.ok()
+                        .headers(headers)
+                        .contentType(MediaType.APPLICATION_PDF)
+                        .contentLength(pdfContent.length)
+                        .body(resource);
+            } else {
+                // Обработка случая, когда PDF-файл не найден
+                return ResponseEntity.notFound().build();
+            }
+        } finally {
+
         }
+
     }
 
 

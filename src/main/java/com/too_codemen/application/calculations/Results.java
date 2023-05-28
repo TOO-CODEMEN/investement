@@ -117,21 +117,21 @@ public class Results {
         return equipment;
     }
 
-//    public double getTypeOfORG(Expenses expenses) {
-//        System.out.println(expenses.getTypeOfOrganization());
-//        switch (expenses.getTypeOfOrganization()) {
-//            case "ИП":
-//                typeORG = soloProprietorRegistration;
-//                break;
-//            case "ООО (АО)":
-//                typeORG = juridicalPersonRegistration;
-//                break;
-//
-//        }
-//
-//        return typeORG;
-//
-//    }
+    public double getTypeOfORG(Expenses expenses) {
+        System.out.println(expenses.getTypeOfOrganization());
+        switch (expenses.getTypeOfOrganization()) {
+            case "ИП":
+                typeORG = soloProprietorRegistration;
+                break;
+            case "ООО (АО)":
+                typeORG = juridicalPersonRegistration;
+                break;
+
+        }
+
+        return typeORG;
+
+    }
 
 
     public double resultCountWithoutIncome(Expenses expenses) {

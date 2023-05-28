@@ -34,11 +34,30 @@ public class ExpensesRepositoryImpl {
     }
 
     public Expenses addExpenses(Expenses expenses) {
-        String sql1 = "INSERT INTO expenses (yearlyIncome, industry, typeOfOrganization, headcount, productionArea," +
-                "productionSquare, plannedAreaOfConstruction, equipment, typeOfBuilding," +
-                "squareOfBuilding, accountingServices) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql1, expenses.getYearlyIncome(), expenses.getIndustry(), expenses.getTypeOfOrganization(), expenses.getHeadcount(), expenses.getProductionArea(), expenses.getProductionSquare(),
-                expenses.getPlannedAreaOfConstruction(), expenses.getEquipment(), expenses.getTypeOfBuilding(), expenses.getSquareOfBuilding(), expenses.getAccountingServices()
+        String sql1 = "INSERT INTO expenses (yearlyIncome, " +
+                "industry, " +
+                "typeOfOrganization, " +
+                "headcount, " +
+                "productionArea," +
+                "productionSquare, " +
+                "plannedAreaOfConstruction, " +
+                "equipment, " +
+                "typeOfBuilding," +
+                "squareOfBuilding, " +
+                "accountingServices) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql1,
+                expenses.getYearlyIncome(),
+                expenses.getIndustry(),
+                expenses.getTypeOfOrganization(),
+                expenses.getHeadcount(),
+                expenses.getProductionArea(),
+                expenses.getProductionSquare(),
+                expenses.getPlannedAreaOfConstruction(),
+                expenses.getEquipment(),
+                expenses.getTypeOfBuilding(),
+                expenses.getSquareOfBuilding(),
+                expenses.getAccountingServices()
         );
         return expenses;
     }
