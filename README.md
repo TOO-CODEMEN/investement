@@ -11,7 +11,7 @@
 ## Установка и запуск
 > Запуск проекта локально
 1. Для запуска потребуется node.js, [Ссылка на скачивание](https://nodejs.org/en)
-2. Склонировать репозиторий [Ссылка на репозиторий](https://github.com/TOO-CODEMEN/investement)
+2. Склонировать репозиторий
 ```shell 
 git clone https://github.com/TOO-CODEMEN/investement.git
 ```
