@@ -34,7 +34,7 @@ git clone https://github.com/TOO-CODEMEN/investement.git
 
 
 ## Документация
-[Документация](https://docs.google.com/document/d/10NFql4wH9PuOzCtY9XhHna48Zdc2Zp4Shg2f0xhlAQ0/edit?usp=sharing)
+[Документация](https://docs.google.com/document/d/1dbX66GJXOWBxL71oms_dr8B6cIky6ogDmViaUjrqjpo/edit)
 
 ## Шаблон дизайна
 [Шаблон](https://www.figma.com/file/mgzhYSmj9zDeGtaROJyXmd/Untitled?type=design&node-id=5-827&t=6C8COgjAAbfJvOB2-0)
