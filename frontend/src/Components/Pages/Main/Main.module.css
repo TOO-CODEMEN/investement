@@ -34,7 +34,7 @@
 
 .input:not(:last-child) {
     margin-right: 15px;
-}   
+}
 
 .form__button {
     background-color: #CC2222;
@@ -48,6 +48,11 @@
     align-self: center;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.form__button__not__auth {
+    color: grey;
+    font-size: 15px;
 }
 
 .form__button:hover {
@@ -68,19 +73,20 @@
     .input {
         max-width: 100%;
     }
+
     .input:not(:last-child) {
         margin-right: 0;
-    }  
+    }
 }
 
 @media (max-width: 500px) {
-    
+
     .head {
         font-size: 14px;
     }
 
     .form {
-        padding: 0px ;
+        padding: 0px;
         border: none;
     }
 
@@ -88,7 +94,7 @@
         width: 100%;
     }
 
-    .form__button  {
+    .form__button {
         font-size: 16px;
         padding: 13px 20px;
     }
@@ -100,7 +106,7 @@
     font-size: 32px;
 }
 
-.cost { 
+.cost {
     margin-bottom: 20px;
 }
 

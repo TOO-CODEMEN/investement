@@ -8,7 +8,6 @@ import Checkbox from '../../UI/Checkbox/Checkbox'
 import { MapForm } from '../../UI/Map/Map'
 import { industryOptions, hardwareOptions, objectTypeOptions } from '../../../data/data'
 import { requestPostExpenses } from '../../../redux/main-reducer'
-import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { isLoggedIn } from '../../../session'
@@ -23,8 +22,6 @@ const Main = ({ requestPostExpenses, isFetching, costObject }) => {
 
     const [patent, setPatent] = useState(false)
 
-    const navigation = useNavigate()
-
     // Состояние объекта формы
     const [calc, setCalc] = useState({
         yearlyIncome: "",
@@ -36,7 +33,7 @@ const Main = ({ requestPostExpenses, isFetching, costObject }) => {
         equipment: "",
         typeOfBuilding: "",
         squareOfBuilding: "",
-        typeOfOrganization: "OOO",
+        typeOfOrganization: "OOO (AO)",
     })
 
     // фукнция, которая срабатывает при отправке формы
@@ -218,6 +215,7 @@ const Main = ({ requestPostExpenses, isFetching, costObject }) => {
                 <button className={cl.form__button}>
                     Рассчитать
                 </button>
+                {isLoggedIn() ? "" : <div className={cl.form__button__not__auth}>Вы не авторизованы, чтобы получить pdf-отчет нужно авторизоваться</div>}
             </form >
 
             <Modal active={modalActive} setActive={setModalActive}>

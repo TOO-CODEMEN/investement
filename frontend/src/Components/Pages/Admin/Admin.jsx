@@ -16,7 +16,11 @@ const Admin = ({ requestExpenses, expenses, isFetching }) => {
 
     if (isFetching) {
         return (
-            <Loader />
+            <div style={{
+                marginTop: 30
+            }}>
+                <Loader />
+            </div>
         )
     }
 
